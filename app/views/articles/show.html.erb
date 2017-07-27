@@ -1,0 +1,16 @@
+<h1>article詳細</h1>
+<%= @article.title %>
+<br>
+<%= @article.content %>
+<br>
+<%= image_tag @article.image.url(:medium) %>
+<td><%= render'articles/tag_list',tag_list: @article.interest_list %></td>
+
+
+<% if current_user.id == @article.user_id %>
+      <%= link_to 'Edit', edit_article_path(@article) %> |
+<% end%>
+    <<%= link_to 'Back', articles_path %>
+
+
+

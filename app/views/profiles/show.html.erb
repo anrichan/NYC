@@ -1,0 +1,15 @@
+
+<strong>NAME:</strong>
+<%= @profiles.user_name %>
+<br>
+    <!-- 写真 -->
+<%= image_tag @profiles.photo.url(:medium) %>
+<br>
+<strong>My Self</strong>
+<%= @profiles.self_introduction %>
+<br>
+<strong>gender</strong>
+<%= @profile_sex.group %>
+
+<%= link_to "profile変更",edit_profile_path %>
+<%= link_to "記事投稿",new_article_path %>

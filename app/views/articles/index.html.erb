@@ -1,0 +1,5 @@
+<% @articles.each do |article| %>
+<ul><%= link_to article.title, article_path(article.id) %></ul>
+
+<% end %>
+<%= link_to "新規投稿", new_article_path %>
