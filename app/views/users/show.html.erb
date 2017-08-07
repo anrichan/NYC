@@ -16,3 +16,9 @@
     <% @user.articles.each do |article| %>
       <li><%= link_to article.title, article_path(article.id) %></li>
     <% end %>
+    <li>
+      <%= link_to favorites_user_path(@user) do %>
+        <div class="text">いいね一覧</div>
+        <div class="num"><%= @user.favorites.count %></div>
+      <% end %>     
+    </li>

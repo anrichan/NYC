@@ -1,0 +1,30 @@
+<ul>
+    <li>
+      <%= link_to users_show_path(@user) do %>
+        <div class="text">投稿数</div>
+        <div class="num"><%= @user.article.count %></div>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to favorites_user_path(@user) do %>
+        <div class="text">いいね一覧</div>
+        <div class="num"><%= @user.favorites.count %></div>
+      <% end %>     
+    </li>
+</ul>
+<% if @user.favorites.empty? %>
+    <div class="list-group-item">
+      まだお気に入りされた投稿はありません。
+    </div>
+<% end %>
+<% @user.favorites.map { |f| f.article }.each do |article| %>
+    <h4 class="user">
+        <span class="user-email">
+          <%#= link_to article.user.email, users_path(article.user) %>
+        </span>
+    <span class="user-id"><%#= article.user.email %></span>
+    </h4>
+    <div class="post-body">
+        <%= article.title %>
+    </div>  
+<% end %>

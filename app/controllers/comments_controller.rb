@@ -3,9 +3,14 @@ class CommentsController < ApplicationController
   def create
     @article = Article.find(params[:article_id])
     # binding.pry
-    @comment = current_user.comments(article: @article)
-    
+    # @comment = current_user.comments(article: @article)
+    @comment = @article.comments.new(comment_params)
+    @comment.user_id = current_user.id
+    @comment.user_name = current_user.profile.user_name
+    @comment.save
+    redirect_to @article
   end
+
   def destroy
     
     @comment = current_user.comments.find_by!(article_id: params[:article_id])

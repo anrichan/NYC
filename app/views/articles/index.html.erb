@@ -3,8 +3,15 @@
 </div>
   <% @articles.each do |article| %>
   <ul><%= link_to article.title, article_path(article.id) %></ul>
+  <td>
+  <% if article.favorited_by? current_user %>
+    <%= link_to "いいね解除", article_favorites_path(article), method: :delete %>
+  <% else %>
+    <%= link_to "いいね", article_favorites_path(article), method: :post %>
+  <% end %>
+  </td>
   <%#= link_to "消す", article_path(article.id), method: :delete %>
-  <% end -%>
+  <% end %>
   <script>
   function initMap() {
     var center = {lat: <%= @articles.last.latitude %>, lng: <%= @articles.last.longitude %>};
@@ -36,5 +43,8 @@
         <% end %>
      };
   </script>
-　<%= link_to "新規投稿", new_article_path %>
-<p><%= link_to "マイページ", "/user/#{current_user.id}" %></p>
+
+  
+
+  <%= link_to "新規投稿", new_article_path %>
+  <p><%= link_to "マイページ", "/users/#{current_user.id}" %></p>

@@ -27,11 +27,11 @@ class ArticlesController < ApplicationController
     # binding.pry
     # @comment = current_user.comments(article: @article)
      @comment = Comment.new
+     @comments = @article.comments.all
     
-    
-
-
+  
   end
+
   def edit
     @article = Article.find(params[:id])
   end
