@@ -3,6 +3,13 @@ class Article < ApplicationRecord
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   # ファイルの拡張子を指定（これがないとエラーが発生する）
   validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
-  belongs_to :user
+  # user関連付け
+  # belongs_to :user
   acts_as_ordered_taggable_on :interests
+  # 地図機能
+  geocoded_by :address
+  after_validation :geocode
+  # コメント機能関連付け
+  has_many :comments, dependent: :destroy
+  has_many :users, through: :comments
 end

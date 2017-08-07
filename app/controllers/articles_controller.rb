@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
 
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update,:destroy]
+  before_action :authenticate_user!
   def new
     @article = Article.new
 
@@ -17,10 +18,17 @@ class ArticlesController < ApplicationController
   end
   def index
     @articles = Article.all
+   
+    
 
   end
   def show
     @article = Article.find(params[:id])
+    # binding.pry
+    # @comment = current_user.comments(article: @article)
+     @comment = Comment.new
+    
+    
 
 
   end
@@ -34,7 +42,11 @@ class ArticlesController < ApplicationController
   end
 
 
-
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    redirect_to articles_path
+  end
 
 
 
@@ -54,7 +66,7 @@ class ArticlesController < ApplicationController
 
 
    def article_params
-      params.require(:article).permit(:image, :title, :content, :user_id, :interest_list)
+      params.require(:article).permit(:image, :title, :content, :user_id, :interest_list, :address, :latitude, :longitude)
     end
     def correct_user
           article = Article.find(params[:id])

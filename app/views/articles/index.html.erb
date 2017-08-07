@@ -1,5 +1,40 @@
-<% @articles.each do |article| %>
-<ul><%= link_to article.title, article_path(article.id) %></ul>
-
-<% end %>
-<%= link_to "新規投稿", new_article_path %>
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+  <% @articles.each do |article| %>
+  <ul><%= link_to article.title, article_path(article.id) %></ul>
+  <%#= link_to "消す", article_path(article.id), method: :delete %>
+  <% end -%>
+  <script>
+  function initMap() {
+    var center = {lat: <%= @articles.last.latitude %>, lng: <%= @articles.last.longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: center
+            });
+    
+    var marker = new google.maps.Marker({
+            position: center,
+            map: map
+           
+            });
+    <% @articles.each do |article| %>
+      
+      var address<%= article.id %> = {lat: <%= article.latitude %>, lng: <%= article.longitude %>};
+      var marker<%= article.id %> = new google.maps.Marker({
+            position: address<%= article.id %>,
+            map: map,
+            title: contentString<%= article.id %>
+            });
+      var contentString<%= article.id %> = '▶︎：<%= link_to article.title, article_path(article.id) %>';
+      var infowindow<%= article.id %> = new google.maps.InfoWindow({
+            content: contentString<%= article.id %>
+            });
+      marker<%= article.id %>.addListener('click', function() {
+          infowindow<%= article.id %>.open(map, marker<%= article.id %>);
+        });
+        <% end %>
+     };
+  </script>
+　<%= link_to "新規投稿", new_article_path %>
+<p><%= link_to "マイページ", "/user/#{current_user.id}" %></p>

@@ -57,3 +57,6 @@ gem "paperclip"
 gem 'seed-fu', '~> 2.3'
 gem 'pry-rails'
 gem 'acts-as-taggable-on'
+gem "gmaps4rails"
+gem "geocoder"
+gem "gon"

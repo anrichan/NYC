@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>NYC</title>
+    <%= include_gon %>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -17,7 +18,8 @@
           deviseにより自動で作成されてますので、rake routesで確認できます -->
           Logged in as <strong><%= current_user.email %></strong>.
           <%= link_to 'プロフィール変更', edit_user_registration_path %> |
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>|
+          <%= link_to "マイページ", "/user/#{current_user.id}" %>
          <% else %>
           <%= link_to "サインイン", new_user_registration_path %> |
           <%= link_to "ログイン", new_user_session_path %>
@@ -40,5 +42,9 @@
      <p class="alert"><%= alert %></p>
 
       <%= yield %>
+      <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJsQQsG2SCG0889BanB4InxMlK6YIf7Ck&callback=initMap">
+    </script>
+    
     </body>
   </html>

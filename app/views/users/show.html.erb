@@ -1,0 +1,18 @@
+<h1>Users#show</h1>
+  <!--- Modelのstyleで指定した :midium など渡すことでサイズを指定できる -->
+  <% if current_user.profile.present? %>
+    <%= image_tag current_user.profile.photo.url(:medium) %>
+    <strong>NAME:<%= current_user.profile.user_name %></strong> 
+    <hr> 
+      <% if current_user.id == @profiles.user_id %>
+        <p><%= link_to "profile変更",edit_profile_path(@profiles) %></p> 
+      <% end %>
+  <% end %>
+
+   <p><%= link_to "記事投稿",new_article_path %></p>
+   <p><%= link_to "マイページ", "/user/#{current_user.id}" %></p>
+   <p><%= link_to 'みんなの記事一覧', articles_path %></p>
+
+    <% @user.articles.each do |article| %>
+      <li><%= link_to article.title, article_path(article.id) %></li>
+    <% end %>

@@ -1,16 +1,67 @@
 <h1>article詳細</h1>
+
+<p><%= @article.address %></p>
+<p><%= @article.latitude %></p>
+<p><%= @article.longitude %></p>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
 <%= @article.title %>
 <br>
 <%= @article.content %>
 <br>
+
 <%= image_tag @article.image.url(:medium) %>
 <td><%= render'articles/tag_list',tag_list: @article.interest_list %></td>
 
 
 <% if current_user.id == @article.user_id %>
-      <%= link_to 'Edit', edit_article_path(@article) %> |
+  <%= link_to 'Edit', edit_article_path(@article) %> |
+  <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <p><%= link_to "マイページ", "/user/#{current_user.id}" %></p>
 <% end%>
-    <<%= link_to 'Back', articles_path %>
+    <%= link_to 'Back', articles_path %>
 
+<script>
+  function initMap() {
+    var <%= @article.title %> = {lat: <%= @article.latitude %>, lng: <%= @article.longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 4,
+      center:  <%= @article.title %>
+    });
+    var marker = new google.maps.Marker({
+      position: <%= @article.title %>,
+      map: map
+    });
+  }
+</script>
 
+<!-- コメント________________________________________ -->
+<h2>コメント</h2>
+<%= form_for([@article, @comment]) do |f| %>
+<div class="field">
+    <%= f.label :comment_title %><br>
+    <%= f.text_field :comment_title %>
+  </div>
+
+  <p>コメント</p>
+  <%= f.text_area :comment_discription %><br>
+  <%= f.hidden_field :article_id, :value => @article.id %>
+  <p><%= f.submit "送信" %></p>
+<% end %>
+
+<!-- <p>コメント一覧</p> -->
+<#% @article.comments.each do |comment| %>
+
+<!-- <span><%= comment.comment_title  %></span><br>
+<span><%= comment.comment_discription  %></span><br>
+<#% end %>
+<p> -->
+  <#%= link_to 'Destroy Comment', [article.comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+<!-- </p> -->
+<%#= render @article.articlecomments %>
 
