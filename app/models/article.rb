@@ -17,5 +17,11 @@ class Article < ApplicationRecord
   # いいねしているかどうか？によって表示するボタンを変えたいので、true, falseを返すメソッドをモデルに実装します。
   def favorited_by? user
     favorites.where(user_id: user.id).exists?
-end
+   end
+  # 星
+  has_many :reviews, dependent: :destroy
+  # 星の平均を出す
+  def average_rate
+    average = self.users.pluck(:rate).sum / self.users.count
+  end
 end

@@ -3,12 +3,18 @@
 </div>
   <% @articles.each do |article| %>
   <ul><%= link_to article.title, article_path(article.id) %></ul>
+  <% stars = article.reviews.average(:rate).to_i %>
+  <span class="stars"><% stars.times do %><a href=""><img src="/assets/images/rate/small_star.png"/></a></li><% end %></span>
+    <%= article.reviews.average(:rate) %>点（<%= article.reviews.count %>）
+
   <td>
   <% if article.favorited_by? current_user %>
     <%= link_to "いいね解除", article_favorites_path(article), method: :delete %>
   <% else %>
     <%= link_to "いいね", article_favorites_path(article), method: :post %>
   <% end %>
+
+  
   </td>
   <%#= link_to "消す", article_path(article.id), method: :delete %>
   <% end %>

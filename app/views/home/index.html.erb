@@ -1,13 +1,51 @@
-<h1>Home#index</h1>
+<div class="home_index">
+  <div class="newyork_title">
+      <span>NewYork</span>
+      <p>New York is really inspiring city,isn'tit?</p>
+    </div>
+  <div class="home_index_box">
+    
+    <div class="home_images">
+      <div id="slideshow">
+        <ul>
+          <li><a href=""><img src="/assets/images/home/fused-768774_1920.jpg" alt="" width="800" height="400" /></a></li>
+          <li><a href=""><img src="/assets/images/home/pexels-photo-421927.jpeg" alt="" width="800" height="400" /></a></li>
+          <li><a href=""><img src="/assets/images/home/american-flag-1681238_1920 (1).jpg" alt="" width="800" height="400" /></a></li>
+          <li><a href=""><img src="/assets/images/home/fused-768774_1920.jpg" alt="" width="800" height="400" /></a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="home_message_japanese">
+      <p>NYに住んでいる人、NYに行った事がある人、NYにこれから行きたいと思ってる人、NYが好きな人の生の声のお勧めの場所やお店を紹介し合えたらいいなと思っています。</p>
+    </div>
+    <div class="home_message_english">
+      <p>To those who love NY</p>
+      <p>Please introduce your favorite places.</p>
+    </div>
+
+    <div class="home_profile_icon">
+      <% if user_signed_in? %>
+        <%=link_to new_profile_path(@profile) do %>
+          <i class="fa fa-address-card-o fa-4x" aria-hidden="true"></i>
+          <span>Please make it　your Profile</span>
+        <% end %>
+      <% end %>
+    </dev>
+    
 
 
 
-<% if user_signed_in? %>
- <%=link_to 'プロフィール画像と自己紹介の設定',new_profile_path(@profile) %>
+
+
+
+
+
+<% if admin_signed_in? %>
+ <%=link_to 'adminプロフィール画像と自己紹介の設定',new_profile_path(@profile) %>
 <br>
-
-  
-
 <% end %>
+</div>
+</div>
 
 

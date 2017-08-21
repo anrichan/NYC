@@ -1,0 +1,11 @@
+<%= form_for([@article, @comment]) do |f| %>
+<div class="field">
+    <%= f.label :comment_title %><br>
+    <%= f.text_field :comment_title %>
+  </div>
+
+  <p>コメント</p>
+  <%= f.text_area :comment_discription %><br>
+  <%= f.hidden_field :article_id, :value => @article.id %>
+  <p><%= f.submit "送信" %></p>
+<% end %>

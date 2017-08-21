@@ -1,0 +1,49 @@
+.profile_photo_header img{
+
+  width: 80px;
+  height: 80px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50px; /*追加*/
+}
+.img {
+    transform: translate(-50%, -40%); /*調整*/
+}
+
+/*pc-----------------------------------------------------------*/
+@media all and (min-width: 768px) {
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+/*タブレット-------------------------------*/
+
+@media all and (max-width:  767px) {
+
+
+
+
+
+}
+
+
+
+/*スマホ-----------------------------------*/
+
+@media all and (max-width: 425px) {
+
+
+
+}

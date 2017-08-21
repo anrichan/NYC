@@ -10,23 +10,42 @@
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/article.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/user.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/home.css">
+
+    <!-- 星評価 -->
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|News+Cycle|Open+Sans+Condensed:300" rel="stylesheet">
+
+
+    
   </head>
   <body>
     <header>
       <nav>
+      
          <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
-          <% if user_signed_in? %> 
+      <% if user_signed_in? %> 
           <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
           <!-- *_path はUserモデルを作成したときに、
           deviseにより自動で作成されてますので、rake routesで確認できます -->
+          <% if current_user.profile.present? %>
+            <div class="profile_photo_header">
+              <%= image_tag current_user.profile.photo.url(:thumb) %>
+            </div>
+          <% end %>
           Logged in as <strong><%= current_user.email %></strong>.
           <%= link_to 'プロフィール変更', edit_user_registration_path %> |
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>|
           <%= link_to "マイページ", "/users/#{current_user.id}" %>
-         <% else %>
+          
+          <% else %>
           <%= link_to "サインイン", new_user_registration_path %> |
           <%= link_to "ログイン", new_user_session_path %>
-         <% end %>
+      <% end %>
 
          <!-- 管理者用 -->
          <% if admin_signed_in? %> 
@@ -34,7 +53,7 @@
           <%#= link_to 'adminプロフィール変更', edit_admin_registration_path %> |
           <%= link_to "adminログアウト", destroy_admin_session_path, method: :delete %>
          <% else %>
-          <%#= link_to "adminサインイン", new_admin_registration_path %> |
+          <%= link_to "adminサインイン", new_admin_registration_path %> |
           <%= link_to "adminログイン", new_admin_session_path %>
          <% end %>
 
@@ -45,6 +64,14 @@
      <p class="alert"><%= alert %></p>
 
       <%= yield %>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+     <!--    星のjs -->
+      <script src="/assets/js/jquery.raty.js"></script>
+
+
+      <script type="text/javascript" src="/assets/js/style.js"></script>
+      <!--地図 -->
       <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJsQQsG2SCG0889BanB4InxMlK6YIf7Ck&callback=initMap">
     </script>

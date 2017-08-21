@@ -13,7 +13,7 @@
  <% if current_user.id == @profiles.user_id %>
 <%= link_to "profile変更",edit_profile_path %>
 <%= link_to "homeshow",home_show_path %>
-<%= link_to "マイページ", "/user/#{current_user.id}" %>
+<%= link_to "マイページ", "/users/#{current_user.id}" %>
 
 <% end %>
 

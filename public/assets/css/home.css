@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/*home#index*/
+.home_index{
+    background-image: url(../images/home/nyc1.jpg);
+    width: 100%;
+    height: 900px;
+    padding-top: 1px;
+}
+.home_images{
+    width: 100%;
+    text-align: center;
+}
+/*画像js*/
+
+#slideshow{
+    visibility: hidden;
+    margin: 0 auto;
+    width: 800px;
+    height: 400px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+#slideshow img{
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.newyork_title span  {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    font-size: 2em;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin:0;
+    padding:0;
+    /*文字の装飾は省略*/
+    font-family: 'Lora', serif;
+}
+.newyork_title p{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin:0;
+    padding:0;
+    /*文字の装飾は省略*/
+    font-family: 'Lora', serif;
+}
+  .home_profile_icon{
+    color: #777;
+}
+  .home_index_box{
+    margin: 0 auto;
+    width: 800px;
+    height: 800px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    text-align: center;
+    filter:alpha(opacity=80);
+    -moz-opacity: 0.8;
+    opacity: 0.8;
+}
+.home_message_japanese{
+    color: #000000;
+    line-height: 40px;
+    letter-spacing: 0.5em;
+    margin: 2px;
+    padding: 5px;
+}
+.home_message_english{
+    color: #000000;
+    font-family: 'Inconsolata', monospace;
+}
+/*pc-----------------------------------------------------------*/
+@media all and (min-width: 768px) {
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+/*タブレット-------------------------------*/
+
+@media all and (max-width:  767px) {
+
+
+
+
+
+}
+
+
+
+/*スマホ-----------------------------------*/
+
+@media all and (max-width: 425px) {
+
+
+
+}

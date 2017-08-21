@@ -4,6 +4,8 @@
 <p><%= @article.latitude %></p>
 <p><%= @article.longitude %></p>
 
+
+
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
@@ -22,8 +24,10 @@
   <%= link_to 'Edit', edit_article_path(@article) %> |
   <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %> |
   <p><%= link_to "マイページ", "/users/#{current_user.id}" %></p>
+  <strong>by:<%= current_user.profile.user_name %></strong> 
 <% end%>
     <%= link_to 'Back', articles_path %>
+    <%= @profiles.user_name %>
 
 <script>
   function initMap() {
@@ -39,19 +43,37 @@
   }
 </script>
 
+<p>あなたの評価</p>
+<%= form_tag article_reviews_path(@article),method: :post do %>
+   <div id="star"></div>
+
+   <%= submit_tag "レビューする" %>
+<% end %>
+<% stars = @article.reviews.average(:rate).to_i %>
+<!-- 表示する用 -->
+<% my_star = Review.find_by(article_id: @article, user_id: current_user) %>
+<p>
+  <span class="stars"><% my_star.rate.times do %>
+    <a href=""><img src="/assets/images/rate/star_y.png"/></a>
+  <% end %>
+  </span>
+</p>
+<!-- 平均表示 -->
+<span class="stars"><% stars.times do %>
+  <a href=""><img src="/assets/images/rate/star_y.png"/></a>
+<% end %>
+</span>
+<%= @article.reviews.average(:rate) %>点（<%= @article.reviews.count %>）
+
+
+
+
+
+
+
 <!-- コメント________________________________________ -->
 <h2>コメント</h2>
-<%= form_for([@article, @comment]) do |f| %>
-<div class="field">
-    <%= f.label :comment_title %><br>
-    <%= f.text_field :comment_title %>
-  </div>
-
-  <p>コメント</p>
-  <%= f.text_area :comment_discription %><br>
-  <%= f.hidden_field :article_id, :value => @article.id %>
-  <p><%= f.submit "送信" %></p>
-<% end %>
+<%= render 'comment' %>
 
 <p>コメント一覧</p>
 <% @comments.each do |comment| %>
@@ -59,11 +81,13 @@
  <span><%= comment.comment_title  %></span><br>
 <span><%= comment.comment_discription  %></span><br>
 <span><%= comment.user_name  %></span><br>
-<% end %>
 <p> 
+
+  <%#= link_to 'Destroy', article_path(@comment), method: :delete, data: { confirm: 'Are you sure?' } %> |
+
   <%#= link_to 'Destroy Comment', [article.comment],
                method: :delete,
                data: { confirm: 'Are you sure?' } %>
 </p>
 <%#= render @article.articlecomments %>
-
+<% end %>

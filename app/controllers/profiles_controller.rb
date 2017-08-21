@@ -1,6 +1,10 @@
 class ProfilesController < ApplicationController
+  # コントローラーに設定して、ログイン済ユーザーのみにアクセスを許可する
    before_action :authenticate_user!
-   before_action :correct_user, only: [:edit, :update]
+   
+   
+   before_action :current_user, only: [:edit, :update]
+
   def new
     @profile = Profile.new
     @sex = Sex.new
@@ -42,11 +46,6 @@ class ProfilesController < ApplicationController
   def set_sex
     @sexes = Sex.all.pluck(:group)
   end
-  def correct_user
-          profile = Profile.find(params[:id])
-          if current_user.id != profile.user.id
-            redirect_to root_path
-          end
-        end
+  
 
 end

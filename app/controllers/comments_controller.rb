@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+ 
   def create
     @article = Article.find(params[:article_id])
     # binding.pry
@@ -12,8 +13,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    
-    @comment = current_user.comments.find_by!(article_id: params[:article_id])
+    article = Article.find(params[:id])
+    @comment = article.comments.find(params[:article_id])
     @comment.destroy
     redirect_to article_path(@article)
   end
