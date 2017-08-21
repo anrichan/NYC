@@ -1,9 +1,9 @@
 class ProfilesController < ApplicationController
   # コントローラーに設定して、ログイン済ユーザーのみにアクセスを許可する
-   before_action :authenticate_user!
+   # before_action :authenticate_user!
    
    
-   before_action :current_user, only: [:edit, :update]
+   # before_action :current_user, only: [:edit, :update]
 
   def new
     @profile = Profile.new

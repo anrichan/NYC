@@ -3,7 +3,7 @@
     size     : 36,
     starOff: '/assets/images/rate/star_w.png',
     starOn : '/assets/images/rate/star_y.png',
-    // scoreName: 'review[point]' 
+    scoreName: 'review[rate]' 
     });
 
     

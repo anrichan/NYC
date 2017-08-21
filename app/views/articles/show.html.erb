@@ -19,15 +19,19 @@
 <%= image_tag @article.image.url(:medium) %>
 <td><%= render'articles/tag_list',tag_list: @article.interest_list %></td>
 
-
-<% if current_user.id == @article.user_id %>
-  <%= link_to 'Edit', edit_article_path(@article) %> |
-  <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %> |
-  <p><%= link_to "マイページ", "/users/#{current_user.id}" %></p>
-  <strong>by:<%= current_user.profile.user_name %></strong> 
+<!-- userとarticleuser_idが一緒なら消すよってやつ -->
+<% if user_signed_in? %>
+  <% if current_user.id == @article.user_id %>
+    <%= link_to 'Edit', edit_article_path(@article) %> |
+    <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <p><%= link_to "マイページ", "/users/#{current_user.id}" %></p>
+    <strong>by:<%= current_user.profile.user_name %></strong> 
+  <% end%>
 <% end%>
+
+
     <%= link_to 'Back', articles_path %>
-    <%= @profiles.user_name %>
+    
 
 <script>
   function initMap() {
@@ -52,12 +56,15 @@
 <% stars = @article.reviews.average(:rate).to_i %>
 <!-- 表示する用 -->
 <% my_star = Review.find_by(article_id: @article, user_id: current_user) %>
+<% if current_user.reviews.present? %>
 <p>
   <span class="stars"><% my_star.rate.times do %>
     <a href=""><img src="/assets/images/rate/star_y.png"/></a>
   <% end %>
+
   </span>
 </p>
+<% end %>
 <!-- 平均表示 -->
 <span class="stars"><% stars.times do %>
   <a href=""><img src="/assets/images/rate/star_y.png"/></a>
@@ -85,7 +92,7 @@
 
   <%#= link_to 'Destroy', article_path(@comment), method: :delete, data: { confirm: 'Are you sure?' } %> |
 
-  <%#= link_to 'Destroy Comment', [article.comment],
+  <%= link_to 'Destroy Comment', [comment.article, comment],
                method: :delete,
                data: { confirm: 'Are you sure?' } %>
 </p>

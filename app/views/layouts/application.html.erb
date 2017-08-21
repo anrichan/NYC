@@ -24,46 +24,15 @@
     
   </head>
   <body>
-    <header>
-      <nav>
-      
-         <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
-      <% if user_signed_in? %> 
-          <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
-          <!-- *_path はUserモデルを作成したときに、
-          deviseにより自動で作成されてますので、rake routesで確認できます -->
-          <% if current_user.profile.present? %>
-            <div class="profile_photo_header">
-              <%= image_tag current_user.profile.photo.url(:thumb) %>
-            </div>
-          <% end %>
-          Logged in as <strong><%= current_user.email %></strong>.
-          <%= link_to 'プロフィール変更', edit_user_registration_path %> |
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>|
-          <%= link_to "マイページ", "/users/#{current_user.id}" %>
-          
-          <% else %>
-          <%= link_to "サインイン", new_user_registration_path %> |
-          <%= link_to "ログイン", new_user_session_path %>
-      <% end %>
+    
+    
+  
 
-         <!-- 管理者用 -->
-         <% if admin_signed_in? %> 
-          Logged in as <strong><%= current_admin.email %></strong>.
-          <%#= link_to 'adminプロフィール変更', edit_admin_registration_path %> |
-          <%= link_to "adminログアウト", destroy_admin_session_path, method: :delete %>
-         <% else %>
-          <%= link_to "adminサインイン", new_admin_registration_path %> |
-          <%= link_to "adminログイン", new_admin_session_path %>
-         <% end %>
-
-      </nav>
-    </header>
-
-     <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
-
+     
+     <!-- ここの詳細は_header.htmil.erb　 -->
+    <%= render "layouts/header" %>
       <%= yield %>
+      
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
      <!--    星のjs -->

@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
 
-  before_action :current_user, only: [:edit, :update,:destroy]
-  before_action :authenticate_user!
+  # before_action :current_user, only: [:edit, :update,:destroy]
+  # ログインしてなきゃ見れないよ。
+  # before_action :authenticate_user!
   
   def new
     @article = Article.new

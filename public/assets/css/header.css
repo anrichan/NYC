@@ -9,6 +9,12 @@
 .img {
     transform: translate(-50%, -40%); /*調整*/
 }
+.navbar-brand{
+  font-family: 'Lora', serif;
+}
+.navbar{
+  margin-bottom: 0;
+}
 
 /*pc-----------------------------------------------------------*/
 @media all and (min-width: 768px) {

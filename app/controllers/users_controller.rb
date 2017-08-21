@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       @profiles = Profile.find(params[:id])
       @profile_sex = Sex.find(@profiles.sex_id)
       @articles = current_user.articles
+      @favorites = Favorite.where("user_id = ?", @user)
      
   end
 
