@@ -4,7 +4,7 @@ class Article < ApplicationRecord
   # ファイルの拡張子を指定（これがないとエラーが発生する）
   validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
   # user関連付け
-  # belongs_to :user
+  belongs_to :user
   acts_as_ordered_taggable_on :interests
   # 地図機能
   geocoded_by :address

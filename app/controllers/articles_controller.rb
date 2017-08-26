@@ -20,6 +20,9 @@ class ArticlesController < ApplicationController
   end
   def index
     @articles = Article.all
+
+    # @rank = Article.find(Review.group(:rate).order('count(rate) desc').limit(5).pluck(:article_id))
+    # @rank = Article.joins(:reviews).includes(:reviews).order("avg(reviews.rate) desc")
   end
   
   def show
@@ -30,8 +33,8 @@ class ArticlesController < ApplicationController
      @comments = @article.comments.all
      @review = Review.new
      @profiles = Profile.find(params[:id])
-   
-    
+     @stars = @article.reviews.average(:rate).to_i
+     @my_star = Review.find_by(article_id: @article, user_id: current_user) 
   end
 
   def edit
@@ -48,6 +51,10 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.destroy
     redirect_to articles_path
+  end
+
+  def rank
+    
   end
 
   

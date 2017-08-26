@@ -1,35 +1,54 @@
-<%= form_for(@article) do |f| %>
+<div class="article_new_contents">
+  <div class="article_new_box">
+    <%= form_for(@article) do |f| %>
+      <div class="article_new_title_name">
+        <div class="field">
+          <%= f.label :title %><br>
+          <%= f.text_field :title %>
+        </div>
+      </div>
+      <div class="article_new_image_name">
+        <div class="field">
+          <%= f.label "画像" %><br>
+      </div>
+          <div class="article_new_image">
+            <ul>
+              <%= f.file_field :image %>
+            </ul>
+          </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+      <div class="field">
+        <%= f.label :content %><br>
+        <%= f.text_area :content %>
+      </div>
+
+      <div class="field">
+        <%= f.label :address %><br>
+        <%= f.text_field :address %>
+      </div>
+
+      <div class="field">
+        <%= f.label :interest_list, "タグ（カンマ区切り）" %><br>
+        <%= text_field_tag 'article[interest_list]', @article.interest_list.join(',') %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+
+    <% end %>
+    <% if current_user.id == @article.user_id %>
+      <div class="article_new_edit">
+        <%= link_to edit_article_path(@article) do %> 
+        <button type="button" class="btn btn-default">Edit</button>
+        <% end %>
+    <% end%>
+    <div class="article_new_back">
+      <%= link_to  articles_path do %>
+      <button type="button" class="btn btn-default">Back</button>
+      <%end%>
+    
   </div>
-
-  <div class="field">
-    <%= f.label "画像" %><br>
-    <ul>
-      <%= f.file_field :image %>
-    </ul>
-  </div>
-
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= f.label :interest_list, "タグ（カンマ区切り）" %><br>
-    <%= text_field_tag 'article[interest_list]', @article.interest_list.join(',') %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-
-<% end %>
+</div>
 

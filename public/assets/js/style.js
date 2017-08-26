@@ -6,8 +6,6 @@
     scoreName: 'review[rate]' 
     });
 
-    
-
 //     $(function(){
 //      // 設定
 // var $width =800; // 横幅

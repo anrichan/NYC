@@ -1,14 +1,14 @@
 <div class="profile_new">
-<div class="profile_new_contents">
-<%= form_for(@profile) do |f| %>
-<div class="field">
-    <%= f.label "name" %><br>
-    <%= f.text_field :user_name %>
-  </div>
-  <div class="field">
-  <%= f.label "gender" %><br>
-  <%= f.collection_select :sex_id, Sex.all, :id, :group %>
- </div>
+  <div class="profile_new_contents">
+    <%= form_for(@profile) do |f| %>
+      <div class="field">
+        <%= f.label "name" %><br>
+        <%= f.text_field :user_name %>
+      </div>
+      <div class="field">
+        <%= f.label "gender" %><br>
+        <%= f.collection_select :sex_id, Sex.all, :id, :group %>
+     </div>
 
 <div class="field">
     <%= f.label "your self introduction" %><br>

@@ -1,20 +1,46 @@
-<h1>article詳細</h1>
+<div class="article_show_contents">
+  <div class="article_show_box">
+    <h2 class="article_show_title_name">
+      <%= @article.address %></h2>
+    <p><%= @article.latitude %></p>
+    <p><%= @article.longitude %></p>
+    <strong>by:<%= link_to @article.user.profile.user_name %></strong>
 
-<p><%= @article.address %></p>
-<p><%= @article.latitude %></p>
-<p><%= @article.longitude %></p>
 
 
+<td>
+  <% if @article.favorited_by? current_user %>
+    <%= link_to article_favorites_path(@article), method: :delete do %>
+      <img src="/assets/images/rate/love_p.png"/>
+      
+    <% end %>
+    <p>お気に入りに保存</p>
+  <% else %>
+    <%= link_to article_favorites_path(@article), method: :post  do %>    
+      <img src="/assets/images/rate/love_w.png"/>
+    <% end %>
+    <p>お気に入りに保存</p>
+  <% end %>
+  </td>
 
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+
+<div class="article_show_map">
+  <div style='width: 800px;'>
+    <div id="map" style='width: 800px; height: 400px;'></div>
+  </div>
 </div>
 
-<%= @article.title %>
-<br>
-<%= @article.content %>
-<br>
-<%= @article.favorites.count %>
+  <p><%= @article.title %></p>
+  <br>
+  <%= @article.created_at.to_s(:published_on) %>
+  <br>
+  <%= @article.content %>
+  <br>
+  <%= @article.favorites.count %>
+  <br>
+
+
+
 
 <%= image_tag @article.image.url(:medium) %>
 <td><%= render'articles/tag_list',tag_list: @article.interest_list %></td>
@@ -22,15 +48,18 @@
 <!-- userとarticleuser_idが一緒なら消すよってやつ -->
 <% if user_signed_in? %>
   <% if current_user.id == @article.user_id %>
+
     <%= link_to 'Edit', edit_article_path(@article) %> |
     <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %> |
     <p><%= link_to "マイページ", "/users/#{current_user.id}" %></p>
     <strong>by:<%= current_user.profile.user_name %></strong> 
   <% end%>
+  
 <% end%>
 
 
     <%= link_to 'Back', articles_path %>
+
     
 
 <script>
@@ -47,30 +76,33 @@
   }
 </script>
 
-<p>あなたの評価</p>
+
 <%= form_tag article_reviews_path(@article),method: :post do %>
    <div id="star"></div>
 
    <%= submit_tag "レビューする" %>
 <% end %>
-<% stars = @article.reviews.average(:rate).to_i %>
-<!-- 表示する用 -->
-<% my_star = Review.find_by(article_id: @article, user_id: current_user) %>
-<% if current_user.reviews.present? %>
-<p>
-  <span class="stars"><% my_star.rate.times do %>
-    <a href=""><img src="/assets/images/rate/star_y.png"/></a>
-  <% end %>
 
+<!-- 星の表示する用 -->
+<% if current_user.reviews.present? %>
+
+  <p>Your recomend STARS↓</p>
+  <p>
+  <span class="stars"><% @my_star.rate.times do %>
+    <a href=""><img src="/assets/images/rate/star_y.png"/></a>
   </span>
-</p>
+  <% end %>
+  （<%= @article.reviews.count %>）
+  </p>
 <% end %>
+
 <!-- 平均表示 -->
-<span class="stars"><% stars.times do %>
+<span class="stars"><% @stars.times do %>
   <a href=""><img src="/assets/images/rate/star_y.png"/></a>
 <% end %>
 </span>
-<%= @article.reviews.average(:rate) %>点（<%= @article.reviews.count %>）
+<%= @article.reviews.average(:rate) %>点
+
 
 
 
@@ -79,7 +111,7 @@
 
 
 <!-- コメント________________________________________ -->
-<h2>コメント</h2>
+
 <%= render 'comment' %>
 
 <p>コメント一覧</p>
@@ -88,6 +120,7 @@
  <span><%= comment.comment_title  %></span><br>
 <span><%= comment.comment_discription  %></span><br>
 <span><%= comment.user_name  %></span><br>
+<span><%= comment.created_at.to_s(:published_on) %></span><br>
 <p> 
 
   <%#= link_to 'Destroy', article_path(@comment), method: :delete, data: { confirm: 'Are you sure?' } %> |
@@ -98,3 +131,6 @@
 </p>
 <%#= render @article.articlecomments %>
 <% end %>
+
+</div>
+</div>

@@ -1,8 +1,10 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
+  
   def create
         @article = Article.find(params[:article_id])
         @reviews = current_user.reviews.build(article: @article, rate: params[:review][:rate])
+        
 
         if @reviews.save
           redirect_to @article, notice: "評価しました"

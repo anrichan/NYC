@@ -11,6 +11,7 @@ class ProfilesController < ApplicationController
   end
   def create
     @profile = Profile.new(profile_params)
+    
     @profile.user_id = current_user.id
     if @profile.save
       redirect_to profile_path(@profile), notice: 'プロフィールを作成しました'
