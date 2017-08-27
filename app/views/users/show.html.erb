@@ -18,16 +18,28 @@
       <p><%= link_to "マイページ", "/users/#{current_user.id}" %></p>
       <p><%= link_to 'みんなの記事一覧', articles_path %></p>
       <p><%= link_to 'user一覧', users_path %></p>
-      
-      <p>自分の投稿↓</p>
-  <% else %>
-        <% @user.articles.each do |article| %>
-          <li><%= link_to article.title, article_path(article.id) %></li>
-          <li><%= link_to favorites_user_path(@user) do %>
+      <p><%= link_to favorites_user_path(@user) do %>
             <div class="text">いいね一覧</div>
             <div class="num"><%= @user.favorites.count %></div>
-          <% end %>     
-          </li>
+          <% end %> 
+      <li>
+      <%= link_to user_path(@user) do %>
+        <div class="text">投稿数</div>
+        <div class="num"><%= @user.article.count %></div>
+      <% end %>    
+          </p>
+
+      
+      <p>自分の投稿↓</p>
+      <% @user.articles.each do |article| %>
+          <li><%= link_to article.title, article_path(article.id) %></li>
+          
+        <% end %>
+      <% else %>
+  　　<p>記事一覧</p>
+        <% @user.articles.each do |article| %>
+          <li><%= link_to article.title, article_path(article.id) %></li>
+          
         <% end %>
         <%= render 'follow_form' %>
     
@@ -36,6 +48,5 @@
     <% end %>
   </div>
 </div>
-　
  
       

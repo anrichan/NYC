@@ -2,42 +2,41 @@
   <div class="article_show_box">
     <h2 class="article_show_title_name">
       <%= @article.address %></h2>
-    <p><%= @article.latitude %></p>
-    <p><%= @article.longitude %></p>
-    <strong>by:<%= link_to @article.user.profile.user_name %></strong>
+    <p>by:<%= link_to @article.user.profile.user_name %></p>
+    <td>
+      <% if @article.favorited_by? current_user %>
+        <%= link_to article_favorites_path(@article), method: :delete do %>
+          <img src="/assets/images/rate/love_p.png"/>
+        <% end %>
+        <p>お気に入りに保存しました</p>
+      <% else %>
+        <%= link_to article_favorites_path(@article), method: :post  do %>    
+          <img src="/assets/images/rate/love_w.png"/>
+        <% end %>
+        <p>お気に入りに保存</p>
+      <% end %>
+    </td>
 
+<!-- マップ表示 -->
+    <div class="article_show_map">
+      <div style='width: 800px;'>
+        <div id="map" style='width: 800px; height: 400px;'></div>
+      </div>
+    </div>
 
-
-<td>
-  <% if @article.favorited_by? current_user %>
-    <%= link_to article_favorites_path(@article), method: :delete do %>
-      <img src="/assets/images/rate/love_p.png"/>
+    <div class="article_show_articlecontents">
+     <div class="article_show_articlecontents_title">
+      <p><%= @article.title %></p>
+      </div>
+     <div class="article_show_articlecontents_time">
+      <%= @article.created_at.to_s(:published_on) %>
+     </div>
       
-    <% end %>
-    <p>お気に入りに保存</p>
-  <% else %>
-    <%= link_to article_favorites_path(@article), method: :post  do %>    
-      <img src="/assets/images/rate/love_w.png"/>
-    <% end %>
-    <p>お気に入りに保存</p>
-  <% end %>
-  </td>
-
-
-<div class="article_show_map">
-  <div style='width: 800px;'>
-    <div id="map" style='width: 800px; height: 400px;'></div>
-  </div>
-</div>
-
-  <p><%= @article.title %></p>
-  <br>
-  <%= @article.created_at.to_s(:published_on) %>
-  <br>
-  <%= @article.content %>
-  <br>
-  <%= @article.favorites.count %>
-  <br>
+      <%= @article.content %>
+      <br>
+      <%= @article.favorites.count %>
+      <br>
+      </div>
 
 
 
@@ -84,7 +83,7 @@
 <% end %>
 
 <!-- 星の表示する用 -->
-<% if current_user.reviews.present? %>
+<% if @my_star.present? %>
 
   <p>Your recomend STARS↓</p>
   <p>
@@ -94,6 +93,8 @@
   <% end %>
   （<%= @article.reviews.count %>）
   </p>
+
+
 <% end %>
 
 <!-- 平均表示 -->
@@ -101,8 +102,7 @@
   <a href=""><img src="/assets/images/rate/star_y.png"/></a>
 <% end %>
 </span>
-<%= @article.reviews.average(:rate) %>点
-
+<button class="btn btn-warning" type="button">reviews<span class="badge"><%= @article.reviews.average(:rate) %>点</span></button>
 
 
 
@@ -114,23 +114,37 @@
 
 <%= render 'comment' %>
 
+
 <p>コメント一覧</p>
+
+<p><%= page_entries_info @comments %></p>
+
 <% @comments.each do |comment| %>
+<div class="media">
+  <div class="media-left media-top" href="#">
+<!--   <%#= image_tag comment.user_photo %> -->
+  
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading"><span><%= comment.comment_title  %></span><br></h4>
+    <span><%= comment.comment_discription  %></span>
+    <br>
+    <span><%= comment.user_name  %></span>
+    <br>
+    <span><%= comment.created_at.to_s(:published_on) %></span>
+    <br>
+  </div>
+</div>
 
- <span><%= comment.comment_title  %></span><br>
-<span><%= comment.comment_discription  %></span><br>
-<span><%= comment.user_name  %></span><br>
-<span><%= comment.created_at.to_s(:published_on) %></span><br>
-<p> 
-
-  <%#= link_to 'Destroy', article_path(@comment), method: :delete, data: { confirm: 'Are you sure?' } %> |
+  
 
   <%= link_to 'Destroy Comment', [comment.article, comment],
                method: :delete,
                data: { confirm: 'Are you sure?' } %>
-</p>
-<%#= render @article.articlecomments %>
+
 <% end %>
 
+<p><%= paginate @comments, outer_window: 4 %></p>
 </div>
 </div>
+

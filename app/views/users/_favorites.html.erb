@@ -2,7 +2,7 @@
     <li>
       <%= link_to users_show_path(@user) do %>
         <div class="text">投稿数</div>
-        <div class="num"><%= @user.article.count %></div>
+        <div class="num"><%= @user.articles.count %></div>
       <% end %>
     </li>
     <li>
@@ -18,13 +18,13 @@
     </div>
 <% end %>
 <% @user.favorites.map { |f| f.article }.each do |article| %>
-    <h4 class="user">
-        <span class="user-email">
-          <%#= link_to article.user.email, users_path(article.user) %>
-        </span>
-    <span class="user-id"><%#= article.user.email %></span>
-    </h4>
+    
     <div class="post-body">
-        <%= article.title %>
+        <%= link_to article.title,article_path(article.id) %>
     </div>  
 <% end %>
+
+<%= link_to users_show_path(@user) do %>
+<p>back</p>
+<% end %>
+

@@ -61,3 +61,4 @@ gem 'acts-as-taggable-on'
 gem "gmaps4rails"
 gem "geocoder"
 gem "gon"
+gem 'kaminari'
