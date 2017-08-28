@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
     @comment = @article.comments.new(comment_params)
     @comment.user_id = current_user.id
     @comment.user_name = current_user.profile.user_name
+    @comment.photo = current_user.profile.photo.url(:thumb)
     @comment.save
     redirect_to @article
   end

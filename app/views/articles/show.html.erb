@@ -4,60 +4,87 @@
       <%= @article.address %></h2>
     <p>by:<%= link_to @article.user.profile.user_name %></p>
     <td>
-      <% if @article.favorited_by? current_user %>
+      
+
+<!-- 内容 -->
+
+    <div class="article_show_articlecontents">
+      <div class="panel panel-default">
+      　<div class="panel-heading">
+          <h5 class="panel-title article_show_articlecontents_title"><%= @article.title %></h5>
+        </div>
+        <div class="panel-body">
+    
+  
+       <div class="article_show_articlecontents_time">
+        <%= @article.created_at.to_s(:published_on) %>
+       </div>
+        <%= image_tag @article.image.url(:medium) %>
+        <td><%= render'articles/tag_list',tag_list: @article.interest_list %></td>
+        <!-- <div class="panel panel-default"> -->
+        
+        <p><%= @article.content %></p>
+        <br>
+        
+        <% if @article.favorited_by? current_user %>
         <%= link_to article_favorites_path(@article), method: :delete do %>
           <img src="/assets/images/rate/love_p.png"/>
         <% end %>
-        <p>お気に入りに保存しました</p>
+        <span>お気に入りに保存しました</span>
       <% else %>
         <%= link_to article_favorites_path(@article), method: :post  do %>    
           <img src="/assets/images/rate/love_w.png"/>
         <% end %>
         <p>お気に入りに保存</p>
       <% end %>
-    </td>
+    
+        <!-- </div> -->
+       <!--  <%= @article.favorites.count %> -->
+      
+        <div class="article_show_articlecontents_author">
+       <p>by:<%= link_to @article.user.profile.user_name %></p>
+      </div>
+      </div>
 
-<!-- マップ表示 -->
+    </div>
+
+    <!-- userとarticleuser_idが一緒なら消すよってやつ -->
+<% if user_signed_in? %>
+  <% if current_user.id == @article.user_id %>
+
+   <%= link_to 'Edit', edit_article_path(@article) %> |
+    <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <%= link_to "マイページ", "/users/#{current_user.id}" %>
+    <p>by:<%=link_to current_user.profile.user_name %></p> 
+  <% end%>
+  
+<% end%>
+
+<!-- 平均表示 -->
+<span class="stars"><% @stars.times do %>
+  <a href=""><img src="/assets/images/rate/star_y.png"/></a>
+<% end %>
+</span>
+<button class="btn btn-warning" type="button">reviews<span class="badge"><%= @article.reviews.average(:rate) %>点</span></button>
+
+
+    <!-- マップ表示 -->
     <div class="article_show_map">
       <div style='width: 800px;'>
         <div id="map" style='width: 800px; height: 400px;'></div>
       </div>
     </div>
 
-    <div class="article_show_articlecontents">
-     <div class="article_show_articlecontents_title">
-      <p><%= @article.title %></p>
-      </div>
-     <div class="article_show_articlecontents_time">
-      <%= @article.created_at.to_s(:published_on) %>
-     </div>
-      
-      <%= @article.content %>
-      <br>
-      <%= @article.favorites.count %>
-      <br>
-      </div>
+    
 
 
 
 
-<%= image_tag @article.image.url(:medium) %>
-<td><%= render'articles/tag_list',tag_list: @article.interest_list %></td>
-
-<!-- userとarticleuser_idが一緒なら消すよってやつ -->
-<% if user_signed_in? %>
-  <% if current_user.id == @article.user_id %>
-
-    <%= link_to 'Edit', edit_article_path(@article) %> |
-    <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %> |
-    <p><%= link_to "マイページ", "/users/#{current_user.id}" %></p>
-    <strong>by:<%= current_user.profile.user_name %></strong> 
-  <% end%>
-  
-<% end%>
 
 
-    <%= link_to 'Back', articles_path %>
+
+
+    
 
     
 
@@ -97,17 +124,11 @@
 
 <% end %>
 
-<!-- 平均表示 -->
-<span class="stars"><% @stars.times do %>
-  <a href=""><img src="/assets/images/rate/star_y.png"/></a>
-<% end %>
-</span>
-<button class="btn btn-warning" type="button">reviews<span class="badge"><%= @article.reviews.average(:rate) %>点</span></button>
 
 
 
 
-
+<%= link_to 'Back', articles_path %>
 
 
 <!-- コメント________________________________________ -->
@@ -115,36 +136,41 @@
 <%= render 'comment' %>
 
 
-<p>コメント一覧</p>
+<div class="article_show_comment_contents">
+  <p><%= page_entries_info @comments %></p>
+    
+    
+    <% @comments.each do |comment| %>
+      <div class="media article_show_comments">
+        <div class="media-left media-top " href="#">
+          <%= image_tag comment.photo %>
+        </div>
 
-<p><%= page_entries_info @comments %></p>
-
-<% @comments.each do |comment| %>
-<div class="media">
-  <div class="media-left media-top" href="#">
-<!--   <%#= image_tag comment.user_photo %> -->
-  
-  </div>
-  <div class="media-body">
-    <h4 class="media-heading"><span><%= comment.comment_title  %></span><br></h4>
-    <span><%= comment.comment_discription  %></span>
-    <br>
-    <span><%= comment.user_name  %></span>
-    <br>
-    <span><%= comment.created_at.to_s(:published_on) %></span>
-    <br>
-  </div>
-</div>
-
-  
-
-  <%= link_to 'Destroy Comment', [comment.article, comment],
+        <div class="media-body">
+          <h4 class="media-heading"><%= comment.comment_title  %><br></h4>
+          <br>
+          <p><%= comment.comment_discription  %></p>
+          <br>
+          <span>by<%= comment.user_name  %></span>
+          <span><%= comment.created_at.to_s(:published_on) %></span>
+          <br>
+        </div>
+   
+        
+      </div>
+      <div class="article_show_coment_destroybt">
+          <span><%= link_to  [comment.article, comment],
                method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-
-<% end %>
+               data: { confirm: 'Are you sure?' } do %></span>
+            <button type="button" class="btn btn-default">Destroy Comment</button>
+          <% end %>
+        </div>
+    <% end %>
+     
 
 <p><%= paginate @comments, outer_window: 4 %></p>
 </div>
 </div>
+<button type="button" class="btn btn-default">My page</button>
+        </span>
 
