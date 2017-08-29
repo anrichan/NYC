@@ -19,13 +19,20 @@ class ArticlesController < ApplicationController
     end
   end
   def index
-    @articles = Article.all
-    @articles = @articles.sort_by { |article| -article.reviews.average(:rate).to_i }
 
+    @articles = Article.page(params[:page])
+    @rank = @articles.sort_by{ |article| -article.reviews.average(:rate).to_i }
+
+
+  
+   
+   
+   
+ # @articles = Article.find(params[:id], page: params[:page], per_page: 20)
     # @rank = Article.find(Review.group(:rate).order('count(rate) desc').limit(5).pluck(:article_id))
     # @rank = Article.joins(:reviews).includes(:reviews).order("avg(reviews.rate) desc")
+ 
   end
-  
   def show
     @article = Article.find(params[:id])
     # binding.pry

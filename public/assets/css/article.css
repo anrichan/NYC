@@ -6,42 +6,6 @@ ul {
 }
 
 /*show*/
-
-
-
-
-/*pc-----------------------------------------------------------*/
-@media all and (min-width: 768px) {
-
-  .article_index_contents{
-    
-    width: 100%;
-    height: 900px;
-    padding-top: 1px;
-    /* background-image: url(../images/article/5points.jpg);*/
-    background-color: #D3D3D3;
-}
-/*白のbox*/
-.article_index_box{
-
-  width:1000px;
-  min-height:800px;
-  color : #000000;
-  margin: 1.5% auto;
-  background-color :#ffffff;
-  line-height: 1.5em;
-  filter:alpha(opacity=80);
-  -moz-opacity: 0.8;
-  opacity: 0.8;
-}
-/*地図*/
-.article_index_map {
-    margin-left: 100px;
-    padding:50px 0;
-}
-
-/*show*/
-
 .article_show_contents{
     
     width: 100%;
@@ -51,8 +15,29 @@ ul {
     background-color: #D3D3D3;
 }
 
+
+
+
+/*pc-----------------------------------------------------------*/
+@media all and (min-width: 750px) {
+
+  
+
+
+/*show*/
+
+/*地図*/
+.article_show_map{
+  width: 600px;
+  
+}
+#map{
+  width: 600px;
+  height: 400px;
+}
+
 .article_show_box{
-  width:1000px;
+  width:800px;
   min-height:90%;
   color : #000000;
   margin: 1.5% auto;
@@ -89,6 +74,11 @@ ul {
 .article_show_articlecontents_author{
   text-align: right;
 }
+.label-default{
+  background-color: #FFD700;
+  
+}
+
 
 
 /*show/comments*/
@@ -106,7 +96,9 @@ ul {
 }
 .article_show_new_comment_contents{
   width:300px;
-  height: 300px;
+  height: 350px;
+  position: 10px;
+
   margin: 1.5% auto;
 }
 .control-label{
@@ -155,6 +147,49 @@ ul {
 
 }
 
+/*index*/
+.article_index_contents{
+    
+    width: 100%;
+    height: auto;
+    padding-top: 1px;
+    /* background-image: url(../images/article/5points.jpg);*/
+    background-color: #D3D3D3;
+}
+
+/*白のbox*/
+.article_index_box{
+
+  width: 1120px;
+  min-height: auto;
+  color : #000000;
+  margin: 1.5% auto;
+  background-color :#ffffff;
+  line-height: 1.5em;
+  filter:alpha(opacity=80);
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+}
+/*地図*/
+.article_index_map {
+    margin-left: 130px;
+    padding:50px 0;
+}
+.article_index_list{
+  width: 1040px;
+  margin: 4px;
+  padding: 4px;
+
+}
+
+.article_index_list_box{
+  
+  
+ 
+
+}
+
+
 
 
 
@@ -174,9 +209,110 @@ ul {
 
 
 
-/*タブレット-------------------------------*/
+/*puras-------------------------------*/
 
-@media all and (max-width:  767px) {
+@media all and (max-width:  750px) {
+
+  /*show*/
+
+
+
+.article_show_box{
+  width:100%;
+  min-height:90%;
+  color : #000000;
+  margin: 1.5% auto;
+  background-color :#ffffff;
+  line-height: 1.5em;
+  filter:alpha(opacity=80);
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+
+}
+.article_show_title_name{
+  padding-top: 30px;
+}
+
+.panel-default{
+  width:500px;
+  margin: 1.5% auto;
+
+}
+
+.panel-heading{
+  margin: 5px;
+  border-radius: 10px;        /* CSS3草案 */  
+  -webkit-border-radius: 10px;    /* Safari,Google Chrome用 */  
+  -moz-border-radius: 10px;   /* Firefox用 */  
+
+}
+.article_show_articlecontents_author{
+  text-align: right;
+}
+/*地図*/
+.article_show_map{
+  width: 500px;
+  margin-left: 110px;
+    /*margin-right: 500px;*/
+    padding:20px 0;
+  
+}
+#map{
+  width: 500px;
+  height: 300px;
+}
+
+.panel-default{
+  width:500px;
+   
+   margin: 1.5% auto;
+
+}
+..label-default{
+  background-color: #FFD700;
+  
+}
+
+
+/*show/comments*/
+.article_show_comment_contents{
+  width: 500px;
+  margin: 1.5% auto;
+  float : none;
+  height: auto;
+}
+.article_show_comments{
+  /*border-bottom: 1px solid #DCDCDC;*/
+  border-top: 1px solid #DCDCDC;
+  margin: 15px;
+  padding: 10px;
+  width: 500px;
+}
+.article_show_new_comment_contents{
+  width:300px;
+  height: 350px;
+  margin: 1.5% auto;
+}
+.control-label{
+  width: 300px;
+  margin: 1.5% auto;
+}
+.article_show_coment_destroybt{
+  margin: 10px 2px;
+  padding: 5px 5px;
+}
+/*ハート*/
+.article_show_favorited img {
+  width: 20px;
+  height: 20px;
+}
+
+
+.label-default{
+  background-color: #FFD700;
+  
+}
+
 
 
 
@@ -188,7 +324,105 @@ ul {
 
 /*スマホ-----------------------------------*/
 
-@media all and (max-width: 425px) {
+@media all and (max-width: 640px) {
+   /*show*/
+
+
+
+.article_show_box{
+  width:100%;
+  min-height:90%;
+  color : #000000;
+  margin: 1.5% auto;
+  background-color :#ffffff;
+  line-height: 1.5em;
+  filter:alpha(opacity=80);
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+
+}
+.article_show_title_name{
+  padding-top: 25px;
+}
+
+.panel-default{
+  width:400px;
+  margin: 1.5% auto;
+
+}
+.article_show_articlecontents_cintent{
+  margin: 10px;
+}
+
+.panel-heading{
+  margin: 5px;
+  border-radius: 10px;        /* CSS3草案 */  
+  -webkit-border-radius: 10px;    /* Safari,Google Chrome用 */  
+  -moz-border-radius: 10px;   /* Firefox用 */  
+
+}
+.article_show_articlecontents_author{
+  text-align: right;
+}
+/*地図*/
+.article_show_map{
+  width: 350px;
+  margin-left: 130px;
+    /*margin-right: 500px;*/
+    padding:10px 0;
+}
+
+#map{
+  width: 350px;
+  height: 300px;
+}
+
+.label-default{
+  background-color: #FFD700;
+  
+}
+
+
+/*show/comments*/
+.article_show_comment_contents{
+  width: 400px;
+  margin: 1.5% auto;
+  float : none;
+  height: auto;
+}
+.article_show_comments{
+  /*border-bottom: 1px solid #DCDCDC;*/
+  border-top: 1px solid #DCDCDC;
+  margin: 15px;
+  padding: 10px;
+  width: 400px;
+}
+.article_show_new_comment_contents{
+  width:  300px;
+  height: 300px;
+  margin: 1.5% auto;
+}
+.control-label{
+  width: 300px;
+  margin: 1.5% auto;
+}
+.article_show_coment_destroybt{
+  margin: 10px 2px;
+  padding: 5px 5px;
+}
+/*ハート*/
+.article_show_favorited img {
+  width: 20px;
+  height: 20px;
+}
+
+
+.label-default{
+  background-color: #FFD700;
+  
+}
+
+
 
 
 

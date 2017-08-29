@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
+  paginates_per 4  # 1ページあたり4項目表示
   # photoをattachファイルとする。stylesで画像サイズを定義できる
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
+  has_attached_file :image, styles: { medium: "300x300>", square: "250x250>", thumb: "100x100>"}
   # ファイルの拡張子を指定（これがないとエラーが発生する）
   validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
   # user関連付け
@@ -24,4 +25,5 @@ class Article < ApplicationRecord
   def average_rate
     average = self.users.pluck(:rate).sum / self.users.count
   end
+
 end

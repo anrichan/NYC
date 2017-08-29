@@ -1,6 +1,6 @@
 
     $('#star').raty({
-    size     : 36,
+    size     : 26,
     starOff: '/assets/images/rate/star_w.png',
     starOn : '/assets/images/rate/star_y.png',
     scoreName: 'review[rate]' 
