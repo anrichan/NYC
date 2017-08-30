@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  admin_name: MyString
+  admin_self_introduction: MyText
+  like_location: MyText
+  admin_id: 1
+
+two:
+  admin_name: MyString
+  admin_self_introduction: MyText
+  like_location: MyText
+  admin_id: 1

@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170828070518) do
+ActiveRecord::Schema.define(version: 20170829202405) do
+
+  create_table "adminprofiles", force: :cascade do |t|
+    t.string   "admin_name"
+    t.text     "admin_self_introduction"
+    t.text     "like_location"
+    t.integer  "admin_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "myphoto_file_name"
+    t.string   "myphoto_content_type"
+    t.integer  "myphoto_file_size"
+    t.datetime "myphoto_updated_at"
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

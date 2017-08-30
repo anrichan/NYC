@@ -1,21 +1,41 @@
-
-<strong>NAME:</strong>
-<%= @profiles.user_name %>
-<br>
+<div class="user_sprofile_show">
+  <div class="user_show_hader">
     <!-- 写真 -->
-<%= image_tag @profiles.photo.url(:medium) %>
-<br>
-<strong>My Self</strong>
-<%= @profiles.self_introduction %>
-<br>
-<strong>gender</strong>
-<%= @profile_sex.group %>
- <% if current_user.id == @profiles.user_id %>
-<%= link_to "profile変更",edit_profile_path %>
-<%= link_to "homeshow",home_show_path %>
-<%= link_to "マイページ", "/users/#{current_user.id}" %>
+    <%= image_tag @profiles.photo.url(:medium) %>
+    <br>
+    <% if current_user.id == @profiles.user_id %>
+      <div class="link_but">
+      <%= link_to edit_profile_path  do %>
+        <button type="button" class="btn btn-default btn-lg link_but">profile edit</button>
+      <% end %>
+      <%= link_to  "/users/#{current_user.id}" do %>
+      <button type="button" class="btn btn-default btn-lg link_but">mypage</button>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title"><%= @profiles.user_name %></h5>
+      </div>
+      <div class="panel-body ">
 
-<% end %>
+        <p class="gender">gender</p>
+        <p><%= @profile_sex.group %></p>
+        <br>
+        <p class="self_introduction">My Self</p>
+        <div>
+        <p><%= @profiles.self_introduction %></p></div>
+        <br>
+      </div>
+    </div>
+ 
+</div>
 
-<%= link_to "記事投稿",new_article_path %>
+
+
+
+
 

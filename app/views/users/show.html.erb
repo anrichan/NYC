@@ -1,13 +1,17 @@
 <div class="user_show_mypage">
-  <div class="user_show_box">
-    <div class="profile_photo">
+ <div class="user_show_hader">
+ <div class="profile_photo">
       <%= image_tag @user.profile.photo.url(:thumb) %>
     </div>
     <div class="user_show_username">
       <strong><%= @user.profile.user_name %></strong> 
     </div>
     <%= render 'stats' %>
-    <hr> 
+    
+
+ </div>
+  <div class="user_show_box">
+    
     
   <% if current_user.id == @profiles.user_id %>
     <p><%= link_to "profile変更",edit_profile_path(@profiles) %></p> 

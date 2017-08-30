@@ -1,19 +1,32 @@
 .profile_photo_header img{
 
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   position: relative;
   overflow: hidden;
   border-radius: 50px; /*追加*/
+
 }
+
 .img {
     transform: translate(-50%, -40%); /*調整*/
 }
 .navbar-brand{
+  
   font-family: 'Lora', serif;
 }
 .navbar{
   margin-bottom: 0;
+}
+
+.menu{
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+
+}
+.search_name{
+  font-family: 'Lora', serif;
+
 }
 
 /*pc-----------------------------------------------------------*/

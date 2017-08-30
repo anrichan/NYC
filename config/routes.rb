@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   
   # post 'articles/article_id/'
- 
+  root to: "home#index"
   get 'home/show'
+  get 'articles/search' => 'articles#search'
 
  devise_for :admins, controllers: {
   sessions:      'admins/sessions',
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
   registrations: 'users/registrations'
   }
 
-  root to: "home#index"
+
 
   resources :users do
      get :favorites, on: :member
@@ -26,8 +27,10 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   
   get "users/:id" => "users#show", as: "users_show"
+  get "admins/:id" => 'admins#show'
 
   resources :profiles
+  resources :adminprofiles
 
   resources :articles do
     resources :comments
@@ -35,6 +38,7 @@ Rails.application.routes.draw do
     resource :reviews, only: [:create, :destroy]
   end
   
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

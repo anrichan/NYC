@@ -62,3 +62,4 @@ gem "gmaps4rails"
 gem "geocoder"
 gem "gon"
 gem 'kaminari'
+gem 'ransack'

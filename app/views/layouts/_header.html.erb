@@ -13,11 +13,15 @@
       </div>
     
     <div class="collapse navbar-collapse" id="navbarEexample3">
+    <div class="menu">
       <ul class="nav navbar-nav">
-      <% if user_signed_in? %> 
+     
+      <% if user_signed_in? %>
+       
+        <li class="active"><%= link_to "my page", "/users/#{current_user.id}" %></li>
+        <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li> 
         <li><%= link_to 'emaile edit', edit_user_registration_path %></li>
-        <li class="active"><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-        <li><%= link_to "my page", "/users/#{current_user.id}" %></li>
+        
       <% else %>
         <li class="active"><%= link_to "Sign in", new_user_registration_path %><li>
         <li><%= link_to "Login", new_user_session_path %></li>
@@ -27,17 +31,31 @@
       <% else %>
         <li><%= link_to "admin Sign in", new_admin_registration_path %></li> 
         <li><%= link_to "admin Login", new_admin_session_path %></li>
+       
       <% end %>
-
-        </ul>
       
-      <form class="navbar-form navbar-left" role="search">
+      
+
+    </ul>
+   
+    </div>
+      
+      <!-- <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="検索キーワード">
         </div>
         <button type="submit" class="btn btn-default">検索</button>
+      </form> -->
 
-      </form>
+      <%= search_form_for(@q, url: articles_search_path, class: "navbar-form navbar-left") do |f| %>
+        <div class="form-group search_name">
+         <%= f.label :title_or_address_cont,"Look it up on search" %>
+         <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+          <%= f.text_field :title_or_address_cont, class: "form-control" %>        
+          <%= f.submit 'search', class: "btn btn-default" %>
+        </div>     
+      <% end %>
+
       <% if user_signed_in? %> 
        <% if current_user.profile.present? %>
 

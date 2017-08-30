@@ -27,25 +27,24 @@
     <div class="home_profile_icon">
       <% if user_signed_in? %>
         <%=link_to new_profile_path(@profile) do %>
-          <i class="fa fa-address-card-o fa-4x" aria-hidden="true"></i>
+       <i class="fa fa-user-plus fa-4x" aria-hidden="true"></i>
+
+          <!-- <i class="fa fa-address-card-o fa-4x" aria-hidden="true"></i> -->
           <p>Please make it　your Profile</p>
           <% end %>
       <% end %>
-    </dev>
+    </div>
     
-
-
-
-
-
-
-
-
-<% if admin_signed_in? %>
- <%=link_to 'adminプロフィール画像と自己紹介の設定',new_profile_path(@profile) %>
-<br>
-<% end %>
+    <div class="home_profile_icon">
+      <%  if admin_signed_in? %>
+        <%=link_to new_adminprofile_path(@adminprofile) do %>
+          <i class="fa fa-address-card-o fa-4x" aria-hidden="true"></i>
+          <p>admin</p>
+          <% end %>
+      <% end %>
+    </div>
 </div>
 </div>
+
 
 

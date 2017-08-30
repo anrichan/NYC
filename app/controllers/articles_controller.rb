@@ -33,6 +33,15 @@ class ArticlesController < ApplicationController
     # @rank = Article.joins(:reviews).includes(:reviews).order("avg(reviews.rate) desc")
  
   end
+
+  def search
+    @q = Article.search(params[:q])#(search_params)
+    @articles = @q
+                .result
+                .order(:created_at)
+  end
+
+
   def show
     @article = Article.find(params[:id])
     # binding.pry
@@ -80,11 +89,14 @@ class ArticlesController < ApplicationController
 
 
 
+  private
+  # def search_params
+  #   params.require(:q).permit(:name_cont, :email_cont)
+  # end
 
-
-   def article_params
-      params.require(:article).permit(:image, :title, :content, :user_id, :interest_list, :address, :latitude, :longitude)
-    end
+  def article_params
+    params.require(:article).permit(:image, :title, :content, :user_id, :interest_list, :address, :latitude, :longitude)
+  end
     
 end
 

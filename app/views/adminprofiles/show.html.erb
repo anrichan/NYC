@@ -1,0 +1,23 @@
+
+<strong>NAME:</strong>
+<%= @adminprofile.admin_name %>
+<br>
+    <!-- 写真 -->
+<%= image_tag @adminprofile.myphoto.url(:medium) %>
+<br>
+<strong>My Self</strong>
+<%= @adminprofile.like_location %>
+<br>
+<strong>My Self</strong>
+<%= @adminprofile.admin_self_introduction %>
+<br>
+
+ <% if current_admin.id == @adminprofile.admin_id %>
+<%= link_to "profile変更",edit_adminprofile_path %>
+<%= link_to "マイページ", "/admins/#{current_admin.id}" %>
+
+
+<% end %>
+
+<%#= link_to "記事投稿",new_article_path %>
+
