@@ -1,9 +1,25 @@
+<div class="followers_contents">
+<% if @user.followers.empty? %>
+    <div class="list-group-item .followers_sorry">
+    <p>Sorry!! You are not followers</p>
+    <p>Have Fun!</p>
+
+     <p><img src="/assets/images/user/kanashimiblue.png"/></p>
+    </div>
+    <% end %>
+    <div class="followers_box">
 <% @user.followers.each do |user| %>
 <table>
 <tr>
-  <td>  <%= user.profile.user_name %> </td>
-  <td><%= link_to '詳細', user_path(user) %></td>
+
+  <td><%= link_to user_path(user) do %>
+  <img src="/assets/images/user/kib.png"/></td>
+  <td><%= user.profile.user_name %></td>
+  
+  <% end %>
 </tr>
 
 </table>
 <% end %>
+</div>
+</div>

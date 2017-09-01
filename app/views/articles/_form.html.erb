@@ -12,15 +12,16 @@
           <%= f.label "画像" %><br>
       </div>
           <div class="article_new_image">
-            <ul>
+           
               <%= f.file_field :image %>
-            </ul>
+           
           </div>
       </div>
 
       <div class="field">
         <%= f.label :content %><br>
-        <%= f.text_area :content %>
+        <%= f.text_area :content, :size => "30x10" %>
+        
       </div>
 
       <div class="field">
@@ -28,13 +29,12 @@
         <%= f.text_field :address %>
       </div>
 
-      <div class="field">
-        <%= f.label :interest_list, "タグ（カンマ区切り）" %><br>
-        <%= text_field_tag 'article[interest_list]', @article.interest_list.join(',') %>
-      </div>
+     
 
-      <div class="actions">
-        <%= f.submit %>
+      <div class="article_new_submitbutn">
+          
+      <%= f.submit "送信", class: "btn btn-primary" %>
+       
       </div>
 
     <% end %>
@@ -48,6 +48,12 @@
       <%= link_to  articles_path do %>
       <button type="button" class="btn btn-default">Back</button>
       <%end%>
+      <div class="article_index_maypagelink">
+        <%= link_to  "/users/#{current_user.id}" do %>
+          <button type="button" class="btn btn-default">My page</button>
+        </span>
+        <% end %>
+      </div>
     
   </div>
 </div>

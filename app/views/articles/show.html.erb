@@ -2,7 +2,8 @@
   <div class="article_show_box">
     <h2 class="article_show_title_name">
       <%= @article.address %></h2>
-    <p>by:<%= link_to @article.user.profile.user_name %></p>
+    <p>by:<%= link_to @article.user.profile.user_name, users_show_path(@article.user.id) %></p>
+
     <td>
       
 
@@ -20,8 +21,9 @@
           </div>
 
           <%= image_tag @article.image.url(:medium) %>
+          <!-- たグリスト -->
 
-          <td><%= render'articles/tag_list',tag_list: @article.interest_list %></td>
+<%#= render'articles/tag_list',tag_list: @article.interest_list %></td> 
             <!-- <div class="panel panel-default"> -->
 
           <div class="article_show_articlecontents_cintent">
@@ -47,7 +49,7 @@
        <!--  <%= @article.favorites.count %> -->
       
         <div class="article_show_articlecontents_author">
-       <p>by:<%= link_to @article.user.profile.user_name %></p>
+       <p>by:<%= link_to @article.user.profile.user_name,users_show_path(@article.user.id) %></p>
       </div>
       </div>
 
@@ -60,8 +62,10 @@
    <%= link_to 'Edit', edit_article_path(@article) %> |
     <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %> |
     <%= link_to "マイページ", "/users/#{current_user.id}" %>
-    <p>by:<%=link_to current_user.profile.user_name %></p> 
+    <p>by:<%=link_to current_user.profile.user_name, users_show_path(@article.user.id)  %></p> 
+    
   <% end%>
+
   
 <% end%>
 
@@ -114,7 +118,7 @@
    <div id="star"></div>
 
    
-   <button type="submit" class="btn btn-default">レビューする</button>
+   <button type="submit" class="btn btn-warning">レビューする</button>
    
 <% end %>
 
@@ -175,7 +179,7 @@
           <span><%= link_to  [comment.article, comment],
                method: :delete,
                data: { confirm: 'Are you sure?' } do %></span>
-            <button type="button" class="btn btn-default">Destroy Comment</button>
+            <button type="button" class="btn btn-danger btn-xs">Destroy Comment</button>
           <% end %>
         </div>
     <% end %>

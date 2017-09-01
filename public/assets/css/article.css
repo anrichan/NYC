@@ -120,8 +120,8 @@ ul {
 }
 
 .article_new_box{
-  width:1000px;
-  min-height:800px;
+  width:500px;
+  min-height:auto;
   color : #000000;
   margin: 1.5% auto;
   background-color :#ffffff;
@@ -132,7 +132,7 @@ ul {
 
 }
  .article_new_image{
-  margin-left: 400px;
+  margin-left: 100px;
     padding:50px 0;
 
 }
@@ -140,12 +140,21 @@ ul {
   padding-top: 5px;
 }
 .article_new_title_name{
+  margin-right: 15px;
+  margin-top: 20px;
   padding-top: 10px;
-}
-.article_new_back{
-   padding-top: 10px;
 
 }
+.article_new_back{
+   padding:10px;
+   margin: 10px;
+
+}
+.article_new_submitbutn{
+  margin: 5px;
+  padding: 5px;
+}
+
 
 /*index*/
 .article_index_contents{
@@ -173,21 +182,36 @@ ul {
 /*地図*/
 .article_index_map {
     margin-left: 130px;
-    padding:50px 0;
+    padding-top: 50px;
+    padding-bottom: 32px;
 }
 .article_index_list{
   width: 1040px;
-  margin: 4px;
-  padding: 4px;
+  margin: 8px;
+  padding: 8px;
 
 }
 
-.article_index_list_box{
+.article_index_list_index {
+  padding: 32px 8px 8px 8px; 
+  margin: 8px;
   
-  
- 
+}
+.article_index_maypagelink{
+  padding: 8px;
+}
+
+/*ランキング*/
+.lanking .article_index_list_name {
+/* font-family: 'Suranna', serif;*/
+ font-family: 'IM Fell Double Pica SC', serif;
+
+
 
 }
+
+
+
 
 
 
@@ -300,6 +324,7 @@ ul {
 .article_show_coment_destroybt{
   margin: 10px 2px;
   padding: 5px 5px;
+
 }
 /*ハート*/
 .article_show_favorited img {
@@ -409,6 +434,10 @@ ul {
 .article_show_coment_destroybt{
   margin: 10px 2px;
   padding: 5px 5px;
+}
+.coment_btm{
+  margin: 10px 40px 2px 2px;
+
 }
 /*ハート*/
 .article_show_favorited img {

@@ -63,3 +63,4 @@ gem "geocoder"
 gem "gon"
 gem 'kaminari'
 gem 'ransack'
+gem 'simple_form'

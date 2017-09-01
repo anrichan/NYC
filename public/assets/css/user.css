@@ -13,6 +13,7 @@
 }
 .img {
 transform: translate(-50%, -40%); /*調整*/
+
 }
 
 .user_sign_up{
@@ -30,31 +31,177 @@ transform: translate(-50%, -40%); /*調整*/
   font-family: 'Lora', serif;
   line-height: 25px;
 }
-.user_log_in{
+.user_log_in {
   background-image: url(../images/home/Sliceag.jpg);
   width: 100%;
   height: 900px;
   padding-top: 1px;
-  
-
 }
 .user_log_in_contents{
-
   padding-top: 30px;
   margin-top:30px;
   font-family: 'Lora', serif;
   line-height: 25px;
+}
+.profile_new {
+  width: 100%;
+  height: 800px;
+  padding-top: 1px;
+    /* background-image: url(../images/article/5points.jpg);*/
+  background-color: #D3D3D3; 
+}
+
+.profile_new_cont_box {
+  width:500px;
+  min-height:auto;
+  color : #000000;
+  margin: 1.5% auto;
+  background-color :#ffffff;
+  line-height: 1.5em;
+  filter:alpha(opacity=80);
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+  
+}
+.profile_new_name {
+  margin: 10px;
+  padding: 10px;
+}
+
+.profile_new_photoname {
+  margin: 10px;
+  padding: 10px;
+}
+.profile_new_self{
+  margin: 10px;
+  padding: 10px;
+}
+.profile_new_self {
+   margin: 10px;
+  padding: 10px;
+}
+.profile_newphoto {
+  margin-left: 100px;
+  /*padding:50px 0;*/
+}
+.profile_new_submitbutan {
+  margin: 10px;
+  padding: 10px;
+}
+/*userindex*/
+.user_index_contents{
+  width: 100%;
+  height: 800px;
+  padding-top: 1px;
+  /*background-image: url("../images/home/Sliceag.jpg");*/
+     background-image: url("../images/user/pexels-p.jpg");
+  background-color: #D3D3D3; 
+}
+
+.user_index_bkimage_box{
+  width:300px;
+  min-height:auto;
+  color : #000000;
+  margin: 1.5% auto;
+  background-color :#ffffff;
+  line-height: 1.5em;
+  filter:alpha(opacity=80);
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+  display:inline-block;
+  list-style:none;
+  text-align:left;
+  padding: 8px 8px 8px 16px;
 
 }
-.profile_new{
-  
-  
-  
-}
-.profile_new_contents{
-  
+.user_index_title {
+  font-family: 'Cormorant Garamond', serif;
 
 }
+/*フェーバリット*/
+.list-group-item {
+ font-family: 'Bilbo', cursive;
+ font-size: 80px;
+  
+}
+
+.favorites_user_article {
+  text-align: left;
+  margin-left:8px;
+}
+.favorites_sorry{
+  font-family: 'Bilbo', cursive;
+ font-size: 80px;
+
+}
+.followers_sorry {
+  font-family: 'Bilbo', cursive;
+ font-size: 80px;
+
+}
+
+  
+  
+
+
+
+/*fフォロワー一覧*/
+.followings_contents {
+   width: 100%;
+    height: 800px;
+    padding-top: 1px;
+     background-image: url(../images/article/5points.jpg);
+   /* background-color: #D3D3D3;*/
+
+}
+.followings_box {
+width: 320px;
+  min-height: 780px;
+  color : #000000;
+  margin: 1.5% auto;
+  background-color :#ffffff;
+  line-height: 1.5em;
+  filter:alpha(opacity=80);
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+   border-radius: 10px;        /* CSS3草案 */  
+    -webkit-border-radius: 10px;    /* Safari,Google Chrome用 */  
+    -moz-border-radius: 10px;   /* Firefox用 */  
+ 
+}
+.followers_contents {
+
+   width: 100%;
+    height: 800px;
+    padding-top: 1px;
+     background-image: url(../images/article/5points.jpg);
+    /*background-color: #D3D3D3;*/
+}
+.followers_box{
+  width: 320px;
+  min-height: 780px;
+  color : #000000;
+  margin: 1.5% auto;
+  background-color :#ffffff;
+  line-height: 1.5em;
+  filter:alpha(opacity=80);
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+   border-radius: 10px;        /* CSS3草案 */  
+    -webkit-border-radius: 10px;    /* Safari,Google Chrome用 */  
+    -moz-border-radius: 10px;   /* Firefox用 */  
+}  
+
+
+
+
+
+
+
+
+
+
+
 
 /*pc-----------------------------------------------------------*/
 @media all and (min-width: 768px) {
@@ -72,17 +219,98 @@ transform: translate(-50%, -40%); /*調整*/
 width: 100%;
 height: 400px;
 margin: 10px;
-padding-top: 40px;
+padding-top: 28px;
 
 background-image: url(../images/user/manha.png);
 
 }
+.user_profile_show_my_box{
+  width:24%;
+  min-height:120px;
+  color : #000000;
+  margin: 2% auto;
+  background-color :#ffffff;
+  line-height: 1.5em;
+  filter:alpha(opacity=80);
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+  /*上下左右の中央寄せ*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+
+}
+.user_show_myself{
+  margin: 5px;
+  padding: 3px;
+  font-size: 3px;
+  letter-spacing:0.1em;
+}
+
+.user_show_box_article{
+ 
+  width: 320px;
+  height: 30%;
+  margin: 1.5% auto;
+  padding: 8px;
+  line-height: 1.5em;
+
+}
+.user_show_box_article_content {
+ 
+  width: 800px;
+  height: 30%;
+  margin: 1.5% auto;
+  padding: 8px;
+  line-height: 1.5em;
+
+}
+.user_show_box_icons{
+  width: 100%;
+ 
+}
+/*アイコン*/
+.user_show_profile_edit_icon{
+  margin: 4px 2px 4px 4px; 
+  padding:4px;
+}
+.user_show_new_articles_icon{
+  margin: 4px 8px 4px 4px;
+  padding:4px;
+
+}
+
+.user_show_mypage_icon{
+  margin: 4px 8px;
+  padding:4px; 
+
+}
+.user_show_articles_tham_icon{
+  margin: 4px 8px;
+  padding:4px; 
+
+}
+.user_show_users_icon{
+  margin: 4px 8px;
+  padding:4px; 
+
+}
+.ser_show_favorit_articles_icon{
+  margin: 4px 8px;
+  padding:4px; 
+}
+ .user_show_ccc{
+  font-family: 'Bungee Outline', cursive;
+  font-size: 24px;
+ }
+
+
+
 
 /*profile/show*/
 
-.user_show_myself{
-   
-}
+
 .ser_sprofile_show{
   width: 100%;
     height: 100%;
@@ -101,7 +329,7 @@ background-image: url(../images/user/manha.png);
 }
 .link_but{
   padding-top: 3px;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 .user_profile_show_box{

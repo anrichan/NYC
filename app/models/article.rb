@@ -25,5 +25,7 @@ class Article < ApplicationRecord
   def average_rate
     average = self.users.pluck(:rate).sum / self.users.count
   end
+  # admin
+  belongs_to :admin
 
 end

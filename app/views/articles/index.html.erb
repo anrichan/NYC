@@ -5,10 +5,14 @@
         <div id="map" style='width: 800px; height: 400px;'></div>
       </div>
     </div>
+    <div class="lanking">
+      <p><img src="/assets/images/article/kingy.png"/></p>
+       <h2>Ranking jest!now!!</h2>
+        <h4>sort by likes</h4>
+    </div>
 
-<%= page_entries_info @articles%>
 
-
+    <%= page_entries_info @articles%>
     <div class="article_index_list">
     <div class="row">
       <% @rank.each do |article| %>
@@ -19,7 +23,7 @@
               <span><%= link_to article.title, article_path(article.id) %></span>
               <p>...</p>
               <span><%= link_to article_path(article.id)  do %></span>
-                <div class="btn btn-default" role="button" target="_blank">ボタン</div>
+                <div class="btn btn-default" role="button" target="_blank">詳細を見る</div>
               <% end %>
             </div>
           </div>
@@ -35,6 +39,52 @@
     </div>
     </div>
     <%= paginate @articles , outer_window: 4 %>
+
+
+
+
+
+
+
+    <div class="article_index_list_index">
+     <div class="article_index_list_name">
+      <h2>List</h2>
+      </div>
+        <table class="table ">
+          <tbody>
+            <% @articles.each do |article| %>
+              <tr>
+                <td><%= image_tag article.image.url(:thumb) %></td>
+                <td><%= article.created_at.to_s(:day) %></td>
+                <td><%= link_to article.title, article_path(article.id) %></td>
+                <td><% stars = article.reviews.average(:rate).to_i %>
+                  <span class="stars"><% stars.times do %>
+                    <a href=""><img src="/assets/images/rate/small_star.png"/></a>
+                    </span>
+                  <% end %></td>
+                <td><%= article.reviews.average(:rate) %>点</td>
+                <td><% if article.favorited_by? current_user %>
+                  <img src="/assets/images/rate/love_mini_pp.png"/>
+                   
+                <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+  
+     
+              
+
+
+
+
+
+   
+  
+  
+  
 
     
     
@@ -75,12 +125,8 @@
             <% end %>
          };
       </script>
-      <div class="article_index_newlink">
-        <span><%= link_to new_article_path do %>
-          <button type="button" class="btn btn-default">new</button>
-        </span>
-        <% end %>
-      </div>
+
+   
       <div class="article_index_maypagelink">
         <span><%= link_to  "/users/#{current_user.id}" do %>
           <button type="button" class="btn btn-default">My page</button>
@@ -88,4 +134,7 @@
         <% end %>
       </div>
   </div>
-  </div>
+</div>
+  
+
+

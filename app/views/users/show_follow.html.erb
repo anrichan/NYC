@@ -1,9 +1,24 @@
+<div class="followings_contents">
+<% if @user.followings.empty? %>
+    <div class="list-group-item">
+    <p>Sorry!! You are not following</p>
+
+    <P class="follow_sorry">tly it! following.</P>
+     <p><img src="/assets/images/user/kanashimiblue.png"/></p>
+    </div>
+    <% end %>
+    <div class="followings_box">
 <% @user.followings.each do |user| %>
 <table>
 <tr>
+ <td><%= link_to user_path(user) do %>
+  <img src="/assets/images/user/kib.png"/></td>
   <td>  <%= user.profile.user_name %> </td>
-  <td><%= link_to '詳細', user_path(user) %></td>
+  
 </tr>
+<% end %>
 
 </table>
 <% end %>
+</div>
+</div>

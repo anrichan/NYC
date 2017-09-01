@@ -15,6 +15,12 @@ Rails.application.routes.draw do
   passwords:     'users/passwords',
   registrations: 'users/registrations'
   }
+  
+  resources :articles do
+    resources :comments
+    resource :favorites, only: [:create, :destroy]
+    resource :reviews, only: [:create, :destroy]
+  end
 
 
 
@@ -27,16 +33,12 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   
   get "users/:id" => "users#show", as: "users_show"
-  get "admins/:id" => 'admins#show'
+  get "admins/:id" => 'admins#show',as: "admins_show"
 
   resources :profiles
   resources :adminprofiles
 
-  resources :articles do
-    resources :comments
-    resource :favorites, only: [:create, :destroy]
-    resource :reviews, only: [:create, :destroy]
-  end
+  
   
 
 
