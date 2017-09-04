@@ -15,8 +15,8 @@
   
   font-family: 'Lora', serif;
 }
-.navbar{
-  margin-bottom: 0;
+.navbar {
+  margin-bottom: 0px!important;
 }
 
 .menu{
@@ -28,6 +28,13 @@
   font-family: 'Lora', serif;
 
 }
+.navbar-default {
+  margin-bottom: 0px;
+
+}
+
+    
+
 
 /*pc-----------------------------------------------------------*/
 @media all and (min-width: 768px) {

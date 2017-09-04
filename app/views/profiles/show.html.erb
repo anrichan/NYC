@@ -6,10 +6,10 @@
     <% if current_user.id == @profiles.user_id %>
       <div class="link_but">
       <%= link_to edit_profile_path  do %>
-        <button type="button" class="btn btn-default btn-lg link_but">profile edit</button>
+        <button type="button" class="btn btn-default  link_but">profile edit</button>
       <% end %>
       <%= link_to  "/users/#{current_user.id}" do %>
-      <button type="button" class="btn btn-default btn-lg link_but">mypage</button>
+      <button type="button" class="btn btn-default  link_but">mypage</button>
       <% end %>
       </div>
     <% end %>

@@ -3,34 +3,28 @@
     <h2 class="article_show_title_name">
       <%= @article.address %></h2>
     <p>by:<%= link_to @article.user.profile.user_name, users_show_path(@article.user.id) %></p>
-
     <td>
       
 
 <!-- 内容 -->
-
     <div class="article_show_articlecontents">
       <div class="panel panel-default">
       　<div class="panel-heading">
           <h5 class="panel-title article_show_articlecontents_title"><%= @article.title %></h5>
         </div>
         <div class="panel-body">
-
           <div class="article_show_articlecontents_time">
             <%= @article.created_at.to_s(:published_on) %>
           </div>
-
           <%= image_tag @article.image.url(:medium) %>
           <!-- たグリスト -->
 
 <%#= render'articles/tag_list',tag_list: @article.interest_list %></td> 
             <!-- <div class="panel panel-default"> -->
-
           <div class="article_show_articlecontents_cintent">
             <p><%= @article.content %></p>
           </div>
           <br>
-
           <div class="article_show_favorited">
             <% if @article.favorited_by? current_user %>
               <%= link_to article_favorites_path(@article), method: :delete do %>
@@ -44,40 +38,41 @@
               <p>お気に入りに保存</p>
             <% end %>
           </div>
-    
-        <!-- </div> -->
+        <!-- </div> カウント-->
        <!--  <%= @article.favorites.count %> -->
-      
-        <div class="article_show_articlecontents_author">
-       <p>by:<%= link_to @article.user.profile.user_name,users_show_path(@article.user.id) %></p>
+          <div class="article_show_articlecontents_author">
+            <p>by:<%= link_to @article.user.profile.user_name,users_show_path(@article.user.id) %></p>
+          </div>
       </div>
-      </div>
-
     </div>
 
     <!-- userとarticleuser_idが一緒なら消すよってやつ -->
-<% if user_signed_in? %>
-  <% if current_user.id == @article.user_id %>
-
-   <%= link_to 'Edit', edit_article_path(@article) %> |
-    <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %> |
-    <%= link_to "マイページ", "/users/#{current_user.id}" %>
-    <p>by:<%=link_to current_user.profile.user_name, users_show_path(@article.user.id)  %></p> 
-    
-  <% end%>
-
-  
-<% end%>
-
-<!-- 平均表示 -->
-<span class="stars"><% @stars.times do %>
-  <a href=""><img src="/assets/images/rate/star_y.png"/></a>
+    <% if user_signed_in? %>
+      <% if current_user.id == @article.user_id %>
+        <%= link_to edit_article_path(@article) do %>
+          <button type="button" class="btn btn-success">Edit</button>
+        <% end %>
+        <%= link_to @article, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <button type="button" class="btn btn-danger">Destroy</button>
+        <% end %>
+        <%= link_to  "/users/#{current_user.id}" do %>
+          <button type="button" class="btn btn-default">My page</button>
+        <% end %>
+        <p>by:<%=link_to current_user.profile.user_name, users_show_path(@article.user.id)  %></p> 
+      <% end%>
+    <% end%>
+    <div class="article_show_comment_contents_backbt">
+<%= link_to  articles_path do %>
+<button type="button" class="btn btn-default">Back</button>
 <% end %>
-</span>
-<span class="label label-default">reviews<span class="badge"><%= @article.reviews.average(:rate) %>点</span></span>
+</div>
 
-
-
+    <!-- 平均表示 -->
+    <span class="stars"><% @stars.times do %>
+      <a href=""><img src="/assets/images/rate/star_y.png"/></a>
+    <% end %>
+    </span>
+    <span class="label label-default">reviews<span class="badge"><%= @article.reviews.average(:rate) %>点</span></span>
 
     <!-- マップ表示 -->
     <div class="article_show_map">
@@ -85,6 +80,17 @@
         <div id="map">
       </div>
     </div>
+
+    
+      
+
+      
+
+
+
+
+
+
 
     
 

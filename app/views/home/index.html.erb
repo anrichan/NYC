@@ -1,9 +1,11 @@
 <div class="home_index">
   <div class="newyork_title">
-      <span>NewYork</span>
+      <h1>NewYork</h1>
       <p>New York is really inspiring city,isn'tit?</p>
     </div>
+  
   <div class="home_index_box">
+
     
     <div class="home_images">
       <div id="slideshow">
@@ -38,9 +40,9 @@
     </div>
     <% if @profile.nil? %>
     <% if user_signed_in? %>
-      <div class="article_show_comment_contents_backbt">
+      <div class="home_goto">
         <%= link_to  articles_path do %>
-          <button type="button" class="btn btn-default">Back</button>
+          <button type="button" class="btn btn-default">Go to the articles</button>
         <% end %>
         <% end %>
       </div>

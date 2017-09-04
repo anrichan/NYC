@@ -9,7 +9,6 @@
   position: relative;
   overflow: hidden;
   border-radius: 50px; /*追加*/
-
 }
 .img {
 transform: translate(-50%, -40%); /*調整*/
@@ -139,24 +138,28 @@ transform: translate(-50%, -40%); /*調整*/
  font-size: 80px;
 
 }
+.folloe_title {
+ font-family: 'Cormorant Garamond', serif;
+}
 
-  
-  
+.favorites_contents{
 
-
+  width: 100%;
+  height: 800px;
+  padding-top: 1px;
+  background-image: url("../images/user/pexels-photo-157.jpg");
+}
 
 /*fフォロワー一覧*/
 .followings_contents {
-   width: 100%;
-    height: 800px;
-    padding-top: 1px;
-     background-image: url(../images/article/5points.jpg);
-   /* background-color: #D3D3D3;*/
-
+  width: 100%;
+  height: 900px;
+  padding-top: 1px;
+  background-image: url(../images/user/c2.jpg);
 }
 .followings_box {
-width: 320px;
-  min-height: 780px;
+  width: 320px;
+  min-height: 680px;
   color : #000000;
   margin: 1.5% auto;
   background-color :#ffffff;
@@ -164,22 +167,22 @@ width: 320px;
   filter:alpha(opacity=80);
   -moz-opacity: 0.8;
   opacity: 0.8;
-   border-radius: 10px;        /* CSS3草案 */  
-    -webkit-border-radius: 10px;    /* Safari,Google Chrome用 */  
-    -moz-border-radius: 10px;   /* Firefox用 */  
+  border-radius: 10px;        /* CSS3草案 */  
+  -webkit-border-radius: 10px;    /* Safari,Google Chrome用 */  
+  -moz-border-radius: 10px;   /* Firefox用 */  
  
 }
 .followers_contents {
-
-   width: 100%;
-    height: 800px;
-    padding-top: 1px;
-     background-image: url(../images/article/5points.jpg);
+  width: 100%;
+  height: 900px;
+  padding-top: 1px;
+  background-image: url(../images/user/c2.jpg);
     /*background-color: #D3D3D3;*/
+
 }
 .followers_box{
   width: 320px;
-  min-height: 780px;
+  min-height: 680px;
   color : #000000;
   margin: 1.5% auto;
   background-color :#ffffff;
@@ -187,9 +190,10 @@ width: 320px;
   filter:alpha(opacity=80);
   -moz-opacity: 0.8;
   opacity: 0.8;
-   border-radius: 10px;        /* CSS3草案 */  
-    -webkit-border-radius: 10px;    /* Safari,Google Chrome用 */  
-    -moz-border-radius: 10px;   /* Firefox用 */  
+  border-radius: 10px;        /* CSS3草案 */  
+  -webkit-border-radius: 10px;    /* Safari,Google Chrome用 */  
+  -moz-border-radius: 10px;   /* Firefox用 */ 
+  padding: 8px; 
 }  
 
 
@@ -204,7 +208,7 @@ width: 320px;
 
 
 /*pc-----------------------------------------------------------*/
-@media all and (min-width: 768px) {
+@media all and (min-width: 750px) {
 
 /*user/show*/  
 .user_show_mypage{
@@ -361,11 +365,66 @@ background-image: url(../images/user/manha.png);
 
 /*タブレット-------------------------------*/
 
-@media all and (max-width:  767px) {
+@media all and (max-width:  749px) {
+
+.user_show_hader{
+width: 100%;
+height: 200px;
+margin: 10px;
+padding-top: 28px;
+
+background-image: url(../images/user/1167892222.png);
+
+}
+.user_show_mypage{
+   width: 100%;
+    height: 100%;
+    padding-top: 1px;
+    /* background-image: url(../images/article/5points.jpg);*/
+   /* background-color: #D3D3D3;*/
+
+}
+.user_profile_show_my_box{
+  width:300px;
+  min-height:80px;
+  color : #000000;
+  margin: 4% auto;
+  background-color :#ffffff;
+  
+  filter:alpha(opacity=80);
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+  /*上下左右の中央寄せ*/
+  border: 1px solid #DCDCDC;
+  
 
 
+}
+
+.user_show_myself{
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.5em;
+}
 
 
+.user_show_box_icons{
+  width: 500px;
+  margin: 100px 8px 8px 52px;
+  padding: 8px;
+  height: 200px;
+}
+
+.user_profile_show_box{
+
+padding-top: 160px;
+}
+.link_but{
+  padding: 4px;
+  margin: 4px;
+}
 
 }
 

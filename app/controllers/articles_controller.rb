@@ -21,6 +21,7 @@ class ArticlesController < ApplicationController
   def index
 
     @articles = Article.page(params[:page])
+   
     @rank = @articles.sort_by{ |article| -article.reviews.average(:rate).to_i }
 
 
