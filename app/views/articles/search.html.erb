@@ -1,12 +1,12 @@
 <div class="search_index_contents">
   <div class="search_index_box">
     <% @articles.each do |article| %>
-      
       <p class="search_title_article">"<%= link_to article.title,article_path(article.id) %>"</p>
-     
-   
       <br>
     <% end %>
   </div>
 </div>
+      
+     
+   
 

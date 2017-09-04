@@ -1,24 +1,21 @@
 <div class="user_index_contents">
-<div class="user_index_title">
-<h4>Peple come and go....</h4>
-</div>
- <div class="user_index_bkimage_box">
-<% @users.each do |user|%>
-<li><i class="fa fa-bicycle" aria-hidden="true"></i><%= link_to user.profile.try(:user_name), users_show_path(user.id) %></li>
-
-
-<% end %>
-</div>
-<div class="user_index_title">
-<h4>Treasure every encounter,for it will never recur.</h4>
-
-<div class="article_index_maypagelink">
-        <span><%= link_to  "/users/#{current_user.id}" do %>
-          <button type="button" class="btn btn-default">My page</button>
-        </span>
-        <% end %>
-      </div>
-
+  <div class="user_index_title">
+    <h4>Peple come and go....</h4>
+  </div>
+  <div class="user_index_bkimage_box">
+    <% @users.each do |user|%>
+      <li><i class="fa fa-bicycle" aria-hidden="true"></i><%= link_to user.profile.try(:user_name), users_show_path(user.id) %></li>
+    <% end %>
+  </div>
+  <div class="user_index_title">
+    <h4>Treasure every encounter,for it will never recur.</h4>
+  </div>
+  <div class="article_index_maypagelink">
+    <span><%= link_to  "/users/#{current_user.id}" do %>
+        <button type="button" class="btn btn-default">My page</button>
+    </span>
+    <% end %>
+  </div>
 </div>
 
 

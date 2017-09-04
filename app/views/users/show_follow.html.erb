@@ -2,15 +2,13 @@
   <div class="folloe_title">
     <h2>followings</h2>
   </div>
-
     <% if @user.followings.empty? %>
       <div class="list-group-item">
         <p>Sorry!! You are not following</p>
-        <p class="follow_sorry">tly it! following.</P>
+        <p class="follow_sorry">tly it! following.</p>
         <p><img src="/assets/images/user/kanashimiblue.png"/></p>
       </div>
     <% else %>
-    
      <div class="followings_box">
       <% @user.followings.each do |user| %>
         <table>
@@ -23,13 +21,11 @@
         </table>
       <% end %>
     <% end %>
-
-
     </div>
       <div class="article_index_maypagelink">
         <span><%= link_to  "/users/#{current_user.id}" do %>
           <button type="button" class="btn btn-default">Back</button>
         </span>
-          <% end %>
-        
+        <% end %>
+      </div>
 </div>

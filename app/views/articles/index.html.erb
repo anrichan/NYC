@@ -1,105 +1,78 @@
 <div class="article_index_contents">
   <div class="article_index_box">
     <div class="article_index_map">
+      <div id="map"></div>
+    </div>
       
-        <div id="map"></div>
-      </div>
-    
     <div class="lanking">
       <p><img src="/assets/images/article/kingy.png"/></p>
-       <h2>Ranking jest!now!!</h2>
-        <h4>sort by likes</h4>
+      <h2>Ranking jest!now!!</h2>
+      <h4>sort by likes</h4>
     </div>
-
-
+        
     <%= page_entries_info @articles %>
-
     <div class="article_index_list">
-    <div class="row">
-      <% @rank.each do |article| %>
-        <div class="col-xs-6 col-md-3 ">
-          <div class="thumbnail">
-            <%= image_tag article.image.url(:square) %>
-            <div class="caption">
-              <span><%= link_to article.title, article_path(article.id) %></span>
-              <p>...</p>
-              <span><%= link_to article_path(article.id)  do %></span>
-                <div class="btn btn-default" role="button" target="_blank">詳細を見る</div>
-              <% end %>
+      <div class="row">
+        <% @rank.each do |article| %>
+          <div class="col-xs-6 col-md-3 ">
+            <div class="thumbnail">
+              <%= image_tag article.image.url(:square) %>
+              <div class="caption">
+                <span><%= link_to article.title, article_path(article.id) %></span>
+                <p>...</p>
+                <span><%= link_to article_path(article.id)  do %></span>
+                  <div class="btn btn-default" role="button" target="_blank">詳細を見る</div>
+                <% end %>
+              </div>
             </div>
+            <span><%= article.created_at.to_s(:day) %></span>
+            <% stars = article.reviews.average(:rate).to_i %>
+            <span class="stars"><% stars.times do %>
+              <a href=""><img src="/assets/images/rate/small_star.png"/></a>
+              </span>
+            <% end %>
+            <span><%= article.reviews.average(:rate) %></span>
           </div>
-          <span><%= article.created_at.to_s(:day) %></span>
-          <% stars = article.reviews.average(:rate).to_i %>
-          <span class="stars"><% stars.times do %>
-            <a href=""><img src="/assets/images/rate/small_star.png"/></a>
-            </span>
-          <% end %>
-          <span><%= article.reviews.average(:rate) %></span>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
     </div>
     <%= paginate @articles, outer_window: 4 %>
-
-
-
-
-
-
-
-
-    
-     
-              
-
-
-
-
-
-   
-  
-  
-  
-
-    
     
 
-
-      
-  
     <!-- マップ -->
-      <script>
-      function initMap() {
-        var center = {lat: <%= @articles.last.latitude %>, lng: <%= @articles.last.longitude %>};
-        var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
-                center: center
-                });
+    <script>
+    function initMap() {
+      var center = {lat: <%= @articles.last.latitude %>, lng: <%= @articles.last.longitude %>};
+      var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 4,
+              center: center
+              });
+      
+      var marker = new google.maps.Marker({
+              position: center,
+              map: map
+             
+              });
+      // マーカー
+    <% @articles.each do |article| %>
         
-        var marker = new google.maps.Marker({
-                position: center,
-                map: map
-               
-                });
-        // マーカー
-        <% @articles.each do |article| %>
-          
-          var address<%= article.id %> = {lat: <%= article.latitude %>, lng: <%= article.longitude %>};
-          var marker<%= article.id %> = new google.maps.Marker({
-                position: address<%= article.id %>,
-                map: map,
-                title: contentString<%= article.id %>
-                });
-          var contentString<%= article.id %> = '▶︎：<%= link_to article.title, article_path(article.id) %>';
-          var infowindow<%= article.id %> = new google.maps.InfoWindow({
-                content: contentString<%= article.id %>
-                });
-          marker<%= article.id %>.addListener('click', function() {
-              infowindow<%= article.id %>.open(map, marker<%= article.id %>);
-            });
-            <% end %>
-         };
-      </script>
+        var address<%= article.id %> = {lat: <%= article.latitude %>, lng: <%= article.longitude %>};
+        var marker<%= article.id %> = new google.maps.Marker({
+              position: address<%= article.id %>,
+              map: map,
+              title: contentString<%= article.id %>
+              });
+        var contentString<%= article.id %> = '▶︎：<%= link_to article.title, article_path(article.id) %>';
+        var infowindow<%= article.id %> = new google.maps.InfoWindow({
+              content: contentString<%= article.id %>
+              });
+        marker<%= article.id %>.addListener('click', function() {
+            infowindow<%= article.id %>.open(map, marker<%= article.id %>);
+          });
+          <% end %>
+       };
+    </script>
+
 
 
       <%= page_entries_info @articles %>
@@ -133,18 +106,46 @@
         </table>
       </div>
       <%= paginate @articles, outer_window: 10 %>
-  
 
-   
+
       <div class="article_index_maypagelink">
         <span><%= link_to  "/users/#{current_user.id}" do %>
           <button type="button" class="btn btn-default">My page</button>
         </span>
         <% end %>
       </div>
+    </div>
   </div>
 </div>
-</div>
   
+
+
+
+
+
+    
+     
+              
+
+
+
+
+
+   
+  
+  
+  
+
+    
+    
+
+
+      
+  
+
+
+  
+
+   
 
 

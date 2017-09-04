@@ -1,3 +1,7 @@
+* {
+    margin: 0;
+    padding: 0;
+}
 .profile_photo_header img{
 
   width: 64px;
@@ -37,9 +41,12 @@
 
 
 /*pc-----------------------------------------------------------*/
-@media all and (min-width: 768px) {
+@media all and (min-width: 751px) {
 
-
+.navbar-default{
+  width: 100%;
+  padding: 0px!important;
+}
 
 
 
@@ -56,9 +63,11 @@
 
 /*タブレット-------------------------------*/
 
-@media all and (max-width:  767px) {
+@media all and (max-width:  750px) {
 
-
+.navbar-default{
+  width: 100%;
+  padding: 0px!important;
 
 
 

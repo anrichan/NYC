@@ -10,16 +10,18 @@
     <div class="article_show_articlecontents">
       <div class="panel panel-default">
       　<div class="panel-heading">
-          <h5 class="panel-title article_show_articlecontents_title"><%= @article.title %></h5>
+          <h5 class="panel-title article_show_articlecontents_title">
+          <%= @article.title %></h5>
         </div>
         <div class="panel-body">
           <div class="article_show_articlecontents_time">
             <%= @article.created_at.to_s(:published_on) %>
           </div>
           <%= image_tag @article.image.url(:medium) %>
+          </td> 
           <!-- たグリスト -->
 
-<%#= render'articles/tag_list',tag_list: @article.interest_list %></td> 
+<%#= render'articles/tag_list',tag_list: @article.interest_list %>
             <!-- <div class="panel panel-default"> -->
           <div class="article_show_articlecontents_cintent">
             <p><%= @article.content %></p>
@@ -62,10 +64,10 @@
       <% end%>
     <% end%>
     <div class="article_show_comment_contents_backbt">
-<%= link_to  articles_path do %>
-<button type="button" class="btn btn-default">Back</button>
-<% end %>
-</div>
+      <%= link_to  articles_path do %>
+        <button type="button" class="btn btn-default">Arricles List</button>
+      <% end %>
+    </div>
 
     <!-- 平均表示 -->
     <span class="stars"><% @stars.times do %>
@@ -81,123 +83,93 @@
       </div>
     </div>
 
-    
-      
-
-      
-
-
-
-
-
-
 
     
 
+    <script>
+      function initMap() {
+        var <%= @article.title %> = {lat: <%= @article.latitude %>, lng: <%= @article.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center:  <%= @article.title %>
+        });
+        var marker = new google.maps.Marker({
+          position: <%= @article.title %>,
+          map: map
+        });
+      }
+    </script>
+
+
+    <%= form_tag article_reviews_path(@article),method: :post do %>
+      <div id="star"></div>
+      <button type="submit" class="btn btn-warning">レビューする</button>
+    <% end %>
+
+    <!-- 星の表示する用 -->
+    <% if @my_star.present? %>
+      <p>Your recomend STARS↓</p>
+      <p>
+      <span class="stars"><% @my_star.rate.times do %>
+        <a href=""><img src="/assets/images/rate/star_y.png"/></a>
+      </span>
+      <% end %>
+      </p>
+    <% end %>
+
+    <div class="article_show_comment_contents_backbt">
+    <%= link_to  articles_path do %>
+    <button type="button" class="btn btn-default">ArticlsList</button>
+    <% end %>
+    </div>
 
 
 
-
-
-
-
-    
-
-    
-
-<script>
-  function initMap() {
-    var <%= @article.title %> = {lat: <%= @article.latitude %>, lng: <%= @article.longitude %>};
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 4,
-      center:  <%= @article.title %>
-    });
-    var marker = new google.maps.Marker({
-      position: <%= @article.title %>,
-      map: map
-    });
-  }
-</script>
-
-
-<%= form_tag article_reviews_path(@article),method: :post do %>
-   <div id="star"></div>
-
-   
-   <button type="submit" class="btn btn-warning">レビューする</button>
-   
-<% end %>
-
-<!-- 星の表示する用 -->
-<% if @my_star.present? %>
-
-  <p>Your recomend STARS↓</p>
-  <p>
-  <span class="stars"><% @my_star.rate.times do %>
-    <a href=""><img src="/assets/images/rate/star_y.png"/></a>
-  </span>
-  <% end %>
-  
-  </p>
-
-
-<% end %>
-
-
-
-
-<div class="article_show_comment_contents_backbt">
-<%= link_to  articles_path do %>
-<button type="button" class="btn btn-default">Back</button>
-<% end %>
-</div>
 
 
 <!-- コメント________________________________________ -->
 
-<%= render 'comment' %>
+    <%= render 'comment' %>
 
 
-<div class="article_show_comment_contents">
-  <p><%= page_entries_info @comments %></p>
-    
-    
-    <% @comments.each do |comment| %>
-      <div class="media article_show_comments">
-        <div class="media-left media-top " href="#">
-          <%= image_tag comment.photo %>
-        </div>
-
-        <div class="media-body">
-          <h4 class="media-heading"><%= comment.comment_title  %><br></h4>
-          <br>
-          <p><%= comment.comment_discription  %></p>
-          
-          <div class="media article_show_comments_nameandtime">
-          <span>by<%= comment.user_name  %></span>
-          <span><%= comment.created_at.to_s(:published_on) %></span>
+    <div class="article_show_comment_contents">
+      <p><%= page_entries_info @comments %></p>
+        <% @comments.each do |comment| %>
+          <div class="media article_show_comments">
+            <div class="media-left media-top " href="#">
+              <%= image_tag comment.photo %>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"><%= comment.comment_title  %><br></h4>
+              <br>
+              <p><%= comment.comment_discription  %></p>
+              
+              <div class="media article_show_comments_nameandtime">
+                <span>by<%= comment.user_name  %></span>
+                <span><%= comment.created_at.to_s(:published_on) %></span>
+              </div>
+            </div>
           </div>
+          <div class="article_show_coment_destroybt">
+              <span><%= link_to  [comment.article, comment],
+                   method: :delete,
+                   data: { confirm: 'Are you sure?' } do %></span>
+                <button type="button" class="btn btn-danger btn-xs">Destroy Comment</button>
+              <% end %>
+            </div>
+        <% end %>
+        <div class="article_show_comment_contents_backbt">
+          <%= link_to  articles_path do %>
+            <button type="button" class="btn btn-default">Articles List</button>
+           <% end %>
         </div>
+        <p><%= paginate @comments, outer_window: 4 %></p>
+  </div>
+</div>
+    
+    
+
    
         
-      </div>
-      <div class="article_show_coment_destroybt">
-          <span><%= link_to  [comment.article, comment],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } do %></span>
-            <button type="button" class="btn btn-danger btn-xs">Destroy Comment</button>
-          <% end %>
-        </div>
-    <% end %>
-    <div class="article_show_comment_contents_backbt">
-<%= link_to  articles_path do %>
-<button type="button" class="btn btn-default">Back</button>
-<% end %>
-</div>
-     
-
-<p><%= paginate @comments, outer_window: 4 %></p>
-</div>
-</div>
 
 

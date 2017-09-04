@@ -19,20 +19,12 @@ class ArticlesController < ApplicationController
     end
   end
   def index
-
     @articles = Article.page(params[:page])
-   
     @rank = @articles.sort_by{ |article| -article.reviews.average(:rate).to_i }
-
-
-  
-   
-   
-   
- # @articles = Article.find(params[:id], page: params[:page], per_page: 20)
+    # @articles = Article.find(params[:id], page: params[:page], per_page: 20)
     # @rank = Article.find(Review.group(:rate).order('count(rate) desc').limit(5).pluck(:article_id))
     # @rank = Article.joins(:reviews).includes(:reviews).order("avg(reviews.rate) desc")
- 
+
   end
 
   def search
@@ -54,7 +46,6 @@ class ArticlesController < ApplicationController
      @stars = @article.reviews.average(:rate).to_i
      @my_star = Review.find_by(article_id: @article, user_id: current_user) 
   end
-
   def edit
     @article = Article.find(params[:id])
   end
@@ -74,6 +65,10 @@ class ArticlesController < ApplicationController
   def rank
     
   end
+ 
+
+   
+
 
   
 

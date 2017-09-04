@@ -1,7 +1,7 @@
 <div class="user_show_mypage">
   <div class="user_show_hader">
     <div class="profile_photo">
-    <%= image_tag @user.profile.photo.url(:thumb) %>
+      <%= image_tag @user.profile.photo.url(:thumb) %>
     </div>
     <div class="user_show_username">
       <strong><%= @user.profile.user_name %></strong> 
@@ -20,113 +20,91 @@
   
   <div class="user_show_box_icons">
     <ul class="list-inline">
-    <% if current_user.id == @profiles.user_id %>
-      <li class="user_show_profile_edit_icon">
-      <%= link_to edit_profile_path(@profiles) do %>
-        <i class="fa fa-4x fa-user-plus" aria-hidden="true"></i>
-        <p>profile edit</p>
-      <% end %></li>
-      
-      </li>
-   <% end %>
+      <% if current_user.id == @profiles.user_id %>
+        <li class="user_show_profile_edit_icon">
+          <%= link_to edit_profile_path(@profiles) do %>
+            <i class="fa fa-4x fa-user-plus" aria-hidden="true"></i>
+            <p>profile edit</p>
+          <% end %></li>
+        </li>
+      <% end %>
    <!--  自分のプロフィールのみで表示内容 -->
- 　<% if current_user.id == @user.id %>
-    <li class="user_show_new_articles_icon">
-      <%= link_to new_article_path do %>
-        <i class="fa fa-4x fa-pencil" aria-hidden="true"></i>
-      <p>新規投稿</p>
-    <% end %>
-    </li>
-    <li class="user_show_mypage_icon">
-      <%= link_to "/users/#{current_user.id}" do %>
-        <i class="fa fa-4x fa-heartbeat" aria-hidden="true"></i>
-        <p>my page</p>
+     　<% if current_user.id == @user.id %>
+        <li class="user_show_new_articles_icon">
+          <%= link_to new_article_path do %>
+            <i class="fa fa-4x fa-pencil" aria-hidden="true"></i>
+          <p>新規投稿</p>
+        <% end %>
+        </li>
+        <li class="user_show_mypage_icon">
+          <%= link_to "/users/#{current_user.id}" do %>
+            <i class="fa fa-4x fa-heartbeat" aria-hidden="true"></i>
+            <p>my page</p>
+          <% end %>
+          </li>
+        <li class="user_show_articles_tham_icon">
+          <%= link_to articles_path do %>
+            <i class="fa fa-4x fa-hand-peace-o" aria-hidden="true"></i>
+              <p>みんなの記事</p>
+          <% end %>
+        </li>
+        <li class="user_show_users_icon">
+          <%= link_to users_path do %>
+            <i class="fa fa-4x fa-child" aria-hidden="true"></i>
+              <p>user一覧</p>
+          <% end %>
+        </li>
+        <li class="user_show_users_icon">
+          <%= link_to root_path do %>
+            <i class="fa fa-4x fa-sign-language" aria-hidden="true"></i>
+              <p>top page</p>
+          <% end %>
+        </li>
+        <li class="user_show_favorit_articles_icon">
+          <%= link_to favorites_user_path(@user) do %>
+           <p class="num user_show_ccc"><%= @user.favorites.count %></p>
+            <i class="fa fa-4x fa-handshake-o" aria-hidden="true"></i>
+            <p>お気に入り記事</p>
+          <% end %>
+        </li>
+        <li class="user_show_article_count_icon"> 
+          <%= link_to user_path(@user) do %>
+            <p class="num user_show_ccc"><%= @user.articles.count %></p>
+            <i class="fa fa-4x fa-taxi" aria-hidden="true"></i>
+            <p>投稿数</p>
+          <% end %> 
+        </li>   
       <% end %>
-      </li>
-    <li class="user_show_articles_tham_icon">
-      <%= link_to articles_path do %>
-        <i class="fa fa-4x fa-hand-peace-o" aria-hidden="true"></i>
-          <p>みんなの記事</p>
-      <% end %>
-    </li>
-    <li class="user_show_users_icon">
-      <%= link_to users_path do %>
-        <i class="fa fa-4x fa-child" aria-hidden="true"></i>
-          <p>user一覧</p>
-      <% end %>
-    </li>
-    <li class="user_show_users_icon">
-      <%= link_to root_path do %>
-        <i class="fa fa-4x fa-sign-language" aria-hidden="true"></i>
-          <p>top page</p>
-      <% end %>
-    </li>
-    
-
-    <li class="user_show_favorit_articles_icon">
-      <%= link_to favorites_user_path(@user) do %>
-       <p class="num user_show_ccc"><%= @user.favorites.count %></p>
-        <i class="fa fa-4x fa-handshake-o" aria-hidden="true"></i>
-        <p>お気に入り記事</p>
-        
-      <% end %>
-    </li>
-    <li class="user_show_article_count_icon"> 
-      <%= link_to user_path(@user) do %>
-        
-        <p class="num user_show_ccc"><%= @user.articles.count %></p>
-        <i class="fa fa-4x fa-taxi" aria-hidden="true"></i>
-        <p>投稿数</p>
-        
-      <% end %> 
-    </li>   
-  <% end %>
-</ul>
-</div>
-
-
-
-
-      
-
-      <div class="user_show_box_article_content">
-      
-
-      <table class="table table-striped">
+    </ul>
+  </div>
+  <div class="user_show_box_article_content">
+    <table class="table table-striped">
       <tbody>
-      
-      <% @user.articles.each do |article| %>
-      <tr>
-          
+        <% @user.articles.each do |article| %>
+          <tr>
           <td><%= image_tag article.image.url(:thumb) %></td>
           <td><%= article.created_at.to_s(:day) %></td>
           <td><%= link_to article.title, article_path(article.id) %></td>
           </tr>
-          
         <% end %>
-        </tbody>
-         </div>
-        
-      
-      
-         <!--  # 他人のプロフィールのみで表示内容 -->
-        
-
+      </tbody>
     </table>
-
-
-        <table class="table table-bordered">
-       
-
- 
-</table>
-
-
-    
- <%= paginate @articles %>
-    
-  
+  </div>
+  <table class="table table-bordered">
+  </table>
+  <%= paginate @articles %>
 </div>
+       
+    
+
+        
+        
+
+
+
+
+      
+
 
  
       

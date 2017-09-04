@@ -85,7 +85,7 @@
     font-family: 'Inconsolata', monospace;
 }
 /*pc-----------------------------------------------------------*/
-@media all and (min-width: 750px) {
+@media all and (min-width: 749px) {
 
 
 
@@ -103,7 +103,7 @@
 
 /*タブレット-------------------------------*/
 
-@media all and (max-width:  749px) {
+@media all and (max-width:  750px) {
 
 .newyork_title h1  {
     position: absolute;

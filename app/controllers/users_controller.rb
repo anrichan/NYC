@@ -10,10 +10,6 @@ class UsersController < ApplicationController
       @profile_sex = Sex.find(@profiles.sex_id)
       @articles = current_user.articles.page(params[:page]).per(5)
       @favorites = Favorite.where("user_id = ?", @user)
-     
-      
-
-     
   end
 
   def favorites
@@ -33,3 +29,7 @@ class UsersController < ApplicationController
   
   
 end
+     
+      
+
+     

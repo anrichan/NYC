@@ -25,40 +25,38 @@
       <p>To those who love NY</p>
       <p>Please introduce your favorite places.</p>
     </div>
-
-    
-         
-          
-    <div class="home_profile_icon">
-      <%  if admin_signed_in? %>
-        <%=link_to new_adminprofile_path(@adminprofile) do %>
-          <i class="fa fa-address-card-o fa-4x" aria-hidden="true"></i>
-          <p>admin</p>
-
+      <div class="home_profile_icon">
+        <%  if admin_signed_in? %>
+          <%=link_to new_adminprofile_path(@adminprofile) do %>
+            <i class="fa fa-address-card-o fa-4x" aria-hidden="true"></i>
+              <p>admin</p>
           <% end %>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% if user_signed_in? %>
     <% if @profile.nil? %>
+      <div class="home_profile_icon">
+       <%=link_to new_profile_path(@profile) do %>
+        <i class="fa fa-user-plus fa-4x" aria-hidden="true"></i>
+        <p>Please make it　your Profile</p>
+        <% end %>
+      </div>
+   <% end %>
+   <% end %>
     <% if user_signed_in? %>
       <div class="home_goto">
         <%= link_to  articles_path do %>
           <button type="button" class="btn btn-default">Go to the articles</button>
         <% end %>
-        <% end %>
-      </div>
-
-    <% else %>
-    <div class="home_profile_icon">
-      <% if user_signed_in? %>
-        <%=link_to new_profile_path(@profile) do %>
-       <i class="fa fa-user-plus fa-4x" aria-hidden="true"></i>
-       <p>Please make it　your Profile</p>
-          <% end %>
-      <% end %>
-    </div>
-<% end %>
+     </div>
+    <% end %>
   </div>
 </div>
+ 
+    
+
+   
+    
 
     
 

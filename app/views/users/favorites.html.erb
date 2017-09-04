@@ -1,32 +1,31 @@
-
-
 <div class="favorites_contents">
  <div class="favorites_titles">
  </div>
-<% if @user.favorites.empty? %>
+  <% if @user.favorites.empty? %>
     <div class="list-group-item .favorites_sorry">
     <p>Sorry!! You don't have it yet</p>
      <p><img src="/assets/images/user/kanashimiblue.png"/></p>
     </div>
-
-<% end %>
-
-<div class="panel panel-default">
-  <% @user.favorites.map { |f| f.article }.each do |article| %>
-      
-      <div class="favorites_user_article">
-      <div class="panel-body">
-      <img src="/assets/images/user/ststs.png"/>
-          <%= link_to article.title,article_path(article.id) %>
-          <hr>
-      </div>
-      </div>  
+  <% end %>
+  <div class="panel panel-default">
+    <% @user.favorites.map { |f| f.article }.each do |article| %>
+        
+        <div class="favorites_user_article">
+        <div class="panel-body">
+        <img src="/assets/images/user/ststs.png"/>
+            <%= link_to article.title,article_path(article.id) %>
+            <hr>
+        </div>
+        </div>  
+    <% end %>
+  </div>
+  <%= link_to users_show_path(@user) do %>
+    <button type="button" class="btn btn-default">Back</button>
   <% end %>
 </div>
 
-<%= link_to users_show_path(@user) do %>
-<button type="button" class="btn btn-default">Back</button>
 
-<% end %>
-</div>
+
+
+
 

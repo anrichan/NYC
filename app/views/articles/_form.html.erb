@@ -7,54 +7,48 @@
           <%= f.text_field :title %>
         </div>
       </div>
+      
       <div class="article_new_image_name">
         <div class="field">
           <%= f.label "画像" %><br>
-      </div>
-          <div class="article_new_image">
-           
-              <%= f.file_field :image %>
-           
-          </div>
+        </div>
+        <div class="article_new_image">
+           <%= f.file_field :image %>
+        </div>
       </div>
 
       <div class="field">
         <%= f.label :content %><br>
         <%= f.text_area :content, :size => "30x10" %>
-        
       </div>
 
       <div class="field">
         <%= f.label :address %><br>
         <%= f.text_field :address %>
       </div>
-
-     
-
+      
       <div class="article_new_submitbutn">
-          
-      <%= f.submit "送信", class: "btn btn-primary" %>
-       
+       <%= f.submit "送信", class: "btn btn-primary" %>
       </div>
-
     <% end %>
     <% if current_user.id == @article.user_id %>
       <div class="article_new_edit">
         <%= link_to edit_article_path(@article) do %> 
-        <button type="button" class="btn btn-default">Edit</button>
-        <% end %>
-    <% end%>
-    <div class="article_new_back">
-      <%= link_to  articles_path do %>
-      <button type="button" class="btn btn-default">Back</button>
-      <%end%>
-      <div class="article_index_maypagelink">
-        <%= link_to  "/users/#{current_user.id}" do %>
-          <button type="button" class="btn btn-default">My page</button>
-        </span>
+          <button type="button" class="btn btn-default">Edit</button>
         <% end %>
       </div>
-    
+    <% end %>
+    <div class="article_new_back">
+      <%= link_to  articles_path do %>
+        <button type="button" class="btn btn-default">Back</button>
+      <%end%>
+    </div>
+    <div class="article_index_maypagelink">
+       <%= link_to  "/users/#{current_user.id}" do %>
+        <button type="button" class="btn btn-default">My page</button>
+        <% end %>
+    </div>
   </div>
 </div>
+    
 
