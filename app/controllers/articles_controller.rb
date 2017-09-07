@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
 
   # before_action :current_user, only: [:edit, :update,:destroy]
   # ログインしてなきゃ見れないよ。
-  # before_action :authenticate_user!
+   before_action :authenticate_user!
   
   def new
     @article = Article.new
@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
     @article.user_id = current_user.id
    
     if @article.save
-      redirect_to articles_path(@article), notice: '記事を投稿しました'
+      redirect_to @article, notice: '記事を投稿しました'
     else
       render 'new'
     end

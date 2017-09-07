@@ -25,7 +25,7 @@
                 <% end %>
               </div>
             </div>
-            <span><%= article.created_at.to_s(:day) %></span>
+            <span class="article_index_list_reviews"><%= article.created_at.to_s(:day) %></span>
             <% stars = article.reviews.average(:rate).to_i %>
             <span class="stars"><% stars.times do %>
               <a href=""><img src="/assets/images/rate/small_star.png"/></a>
@@ -75,12 +75,13 @@
 
 
 
-      <%= page_entries_info @articles %>
+      
       <div class="article_index_list_index">
-     <div class="article_index_list_name">
-      <h2>List</h2>
-      </div>
-        <table class="table ">
+      <%= page_entries_info @articles %>
+        <div class="article_index_list_name">
+          <h2>List</h2>
+        </div>
+        <table class="table">
           <tbody>
             <% @articles.each do |article| %>
               <tr>

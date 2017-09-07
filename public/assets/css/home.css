@@ -3,15 +3,23 @@
     padding: 0;
 }
 /*home#index*/
+
+/*pc-----------------------------------------------------------*/
+@media all and (min-width: 749px) {
+
 .home_index{
     background-image: url(../images/home/nyc1.jpg);
     width: 100%;
     height: 900px;
     padding-top: 1px;
 }
-.home_images{
-    width: 100%;
+.home_images {
+    width: 800px;
+    height: 400px;
     text-align: center;
+
+
+
 }
 /*画像js*/
 
@@ -84,12 +92,12 @@
     color: #000000;
     font-family: 'Inconsolata', monospace;
 }
-/*pc-----------------------------------------------------------*/
-@media all and (min-width: 749px) {
 
 
-
-
+.home_images_phone{
+    display: none;
+   
+}
 
 
 }
@@ -107,7 +115,7 @@
 
 .newyork_title h1  {
     position: absolute;
-    top: 60%;
+    top: 50%;
     left: 50%;
     font-size: 2em;
     -ms-transform: translate(-50%,-50%);
@@ -120,7 +128,7 @@
 }
 .newyork_title p{
     position: absolute;
-    top: 65%;
+    top: 60%;
     left: 50%;
     -ms-transform: translate(-50%,-50%);
     -webkit-transform: translate(-50%,-50%);
@@ -160,6 +168,23 @@
 
 }
 
+.home_index{
+    background-image: url(../images/home/nyc1.jpg);
+    width: 100%;
+    height: auto;
+    padding-top: 1px;
+}
+
+.home_images{
+    width: 100%;
+    text-align: center;
+}
+
+.home_images_phone{
+   
+    
+}
+
 
 }
 
@@ -167,7 +192,71 @@
 
 /*スマホ-----------------------------------*/
 
-@media all and (max-width: 425px) {
+@media all and (max-width: 375px) {
+
+
+.home_images    {
+ display: none;
+   
+}
+.home_images_phone{
+width: 375px;
+height: 400px;
+
+}
+.home_index {
+    background-image: url(../images/home/nyc1mini.jpg);
+    width: 100%;
+    height: auto;
+    padding-top: 1px;
+}
+
+
+.newyork_title h1  {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    font-size: 2em;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  /*  margin:0;*/
+    padding:10;
+    /*文字の装飾は省略*/
+    font-family: 'Lora', serif;
+}
+.newyork_title p{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin-top: 40px;
+    padding:0;
+    /*文字の装飾は省略*/
+    font-family: 'Lora', serif;
+}
+.home_goto {
+
+    margin: 8px;
+}
+.home_index_box{
+
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    text-align: center;
+    filter:alpha(opacity=80);
+    -moz-opacity: 0.8;
+    opacity: 0.8;
+
+}
+
 
 
 

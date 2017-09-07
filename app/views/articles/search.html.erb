@@ -8,6 +8,11 @@
       <% end %>
     <% else %>
       <p>"検索した記事はありません"</p>
+      <div class="home_goto">
+        <%= link_to  articles_path do %>
+          <button type="button" class="btn btn-default">Go to the articles</button>
+        <% end %>
+     </div>
     <% end %>
   </div>
 </div>
