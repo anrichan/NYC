@@ -23,15 +23,7 @@
             <li class="active"><%= link_to "Sign in", new_user_registration_path %></li>
             <li><%= link_to "Login", new_user_session_path %></a></li>
           <% end %>
-            
-
-       
-      <% if admin_signed_in? %>
-        <%= link_to "admin Logout", destroy_admin_session_path, method: :delete %></li> -->
-      <% else %>
-        <li><%= link_to "admin Sign in", new_admin_registration_path %></li> 
-        <li><%= link_to "admin Login", new_admin_session_path %></li>
-      <% end %> 
+        
         </ul>
         </div>
 

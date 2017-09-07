@@ -103,8 +103,10 @@
 
     <%= form_tag article_reviews_path(@article),method: :post do %>
       <div id="star"></div>
-      <button type="submit" class="btn btn-warning">レビューする</button>
-    <% end %>
+      <div class="review_btn">
+        <button type="submit" class="btn btn-warning">レビューする</button>
+        <% end %>
+      </div>
 
     <!-- 星の表示する用 -->
     <% if @my_star.present? %>
