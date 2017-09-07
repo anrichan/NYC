@@ -69,6 +69,10 @@ ul {
 
 
 }
+.review_btn{
+  margin: 8px;
+  padding: 8px;
+}
 
 .panel-heading{
   margin: 5px;
@@ -99,6 +103,7 @@ ul {
   margin: 1.5% auto;
   float : none;
   height: auto;
+  padding-top: 50px;
 }
 .article_show_comments{
   /*border-bottom: 1px solid #DCDCDC;*/
@@ -110,7 +115,7 @@ ul {
   width:300px;
   height: 350px;
  
-  margin: 8px 8px 8px 310px;
+  margin: 8px 8px 8px 246px;
 }
 .control-label{
   width: 300px;
@@ -118,6 +123,20 @@ ul {
 }
 .article_show_coment_destroybt{
   margin: 5px;
+}
+.comment_title {
+  width: 300px;
+
+}
+#comment_comment_discription {
+  width: 300px;
+  height: 240px;
+}
+.comment_discription {
+  width: 300px;
+}
+.coment_btm {
+ padding-left: 115px!important;
 }
 
 
@@ -211,6 +230,7 @@ ul {
 }
 .article_index_maypagelink{
   padding: 8px;
+  margin: 8px;
 }
 
 /*ランキング*/
@@ -267,6 +287,7 @@ ul {
   padding-top: 30px;
 }
 
+
 .panel-default{
   width:500px;
   margin: 1.5% auto;
@@ -306,6 +327,9 @@ ul {
   background-color: #FFD700;
   
 }
+.review_btn {
+  margin: 8px;
+}
 
 
 /*show/comments*/
@@ -314,6 +338,7 @@ ul {
   margin: 1.5% auto;
   float : none;
   height: auto;
+  padding-top: 30px;
 }
 .article_show_comments{
   /*border-bottom: 1px solid #DCDCDC;*/
@@ -326,6 +351,7 @@ ul {
   width:300px;
   height: 350px;
   margin: 1.5% auto;
+  padding: 8px 8px 8px 105px;
 }
 .control-label{
   width: 300px;
@@ -335,6 +361,17 @@ ul {
   margin: 10px 2px;
   padding: 5px 5px;
 
+}
+.comment_title {
+  width: 300px;
+}
+#comment_comment_discription {
+  width: 300px;
+  height: 240px;
+}
+
+.coment_btm {
+ padding-left: 40px!important;
 }
 /*ハート*/
 .article_show_favorited img {
@@ -401,7 +438,10 @@ ul {
   margin: 1.5% auto;
   margin: 8px 8px 8px 100px;
 }
-
+.article_index_maypagelink{
+  padding: 8px;
+  margin: 8px;
+}
 
 
 }
@@ -475,6 +515,7 @@ ul {
   margin: 1.5% auto;
   float : none;
   height: auto;
+  padding: 50px;
 }
 .article_show_comments{
   /*border-bottom: 1px solid #DCDCDC;*/
@@ -496,10 +537,7 @@ ul {
   margin: 10px 2px;
   padding: 5px 5px;
 }
-.coment_btm{
-  margin: 10px 40px 2px 2px;
 
-}
 /*ハート*/
 .article_show_favorited img {
   width: 20px;
