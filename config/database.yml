@@ -22,4 +22,10 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  endoding: utf8
+  username: root
+  password: 
+  database: NYC_production
+  # host: nyc-mysql.cdujugjmtu5j.ap-northeast-1.rds.amazonaws.com
+
